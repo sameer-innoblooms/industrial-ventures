@@ -93,8 +93,15 @@ const ProductSlider: React.FC = () => {
   };
 
   return (
-    <Container maxWidth="lg" sx={{
-        py: 8
+    <Box  sx={{
+      height: 'auto',
+      width: '100%',
+      backgroundImage: `url(/background.jpg)`,
+    }}>
+ <Container maxWidth="lg" sx={{
+        py: 8,
+        
+        // bgcolor: 'background.default',
     }}>
         <Typography
         variant="h2"
@@ -120,7 +127,7 @@ const ProductSlider: React.FC = () => {
         HOT PRODUCTS
       </Typography>
       <Box sx={{ overflow: 'hidden', pb: 5}}>
-      <Slider {...settings}>
+      <Slider {...settings} >
         {products.map((product) => (
           <Box key={product.id} sx={{ pb: 5  }}>
             <Card sx={{
@@ -141,10 +148,10 @@ const ProductSlider: React.FC = () => {
                 }}
               />
               <CardContent>
-                <Typography gutterBottom variant="h5" component="div" textAlign="center">
+                <Typography gutterBottom variant="h5" component="div" textAlign="left">
                   {product.title}
                 </Typography>
-                <Typography variant="body2" color="text.secondary" textAlign="center">
+                <Typography variant="body2" color="text.secondary" textAlign="left">
                   {product.description}
                 </Typography>
               </CardContent>
@@ -154,6 +161,8 @@ const ProductSlider: React.FC = () => {
       </Slider>
     </Box>
     </Container>
+    </Box>
+   
     
   );
 };

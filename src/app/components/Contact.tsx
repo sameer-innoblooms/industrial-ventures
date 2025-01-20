@@ -16,6 +16,7 @@ const Contact = () => {
           bgcolor: "red",
           backgroundImage: "url(/contact.jpg)",
           backgroundSize: "cover",
+          backgroundPositionY: "center",
         }}
       >
         {/* <Image
@@ -30,13 +31,16 @@ const Contact = () => {
         sx={{
           width: "50%",
           height: "auto",
-          bgcolor: "#0099ff",
+          // bgcolor: "#0085cb",
+          bgcolor: '#1C4B84',
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
           paddingBlock: 10,
           
         }}
+
+
       >
         <Box
           sx={{
@@ -108,31 +112,37 @@ const Contact = () => {
               variant="outlined"
               fullWidth
               sx={{
-                bgcolor: 'white'
+                bgcolor: 'white',
+                borderRadius: 1
               }}
             />
             <TextField required label="Mobile" variant="outlined" fullWidth sx={{
-                bgcolor: 'white'
+                bgcolor: 'white',
+                borderRadius: 1
               }} />
             <TextField required label="Email" variant="outlined" fullWidth sx={{
-                bgcolor: 'white'
+                bgcolor: 'white',
+                borderRadius: 1
               }} />
             <TextField
               required
               label="Email"
               variant="outlined"
-              sx={{ gridColumn: "1 / 3", bgcolor: 'white' }}
+              sx={{ gridColumn: "1 / 3", bgcolor: 'white',
+                borderRadius: 1
+               }}
             />
             <Button
               type="submit"
               variant="contained"
               sx={{
-                bgcolor: "#0277bd",
-                color: "white",
+                // bgcolor: "#0277bd",
+                // bgcolor: "rgb(0, 73, 113)",
+                bgcolor: '#052851',
                 py: 1.5,
-                "&:hover": {
-                  bgcolor: "#007bff",
-                },
+                // "&:hover": {
+                //   bgcolor: "#007bff",
+                // },
 
                 gridColumn: "1/3",
               }}

@@ -10,7 +10,7 @@ import {
   useTheme,
   useMediaQuery
 } from '@mui/material';
-import { styled } from '@mui/system';
+import { bgcolor, styled } from '@mui/system';
 
 // const HeroContainer = styled(Box)(({ theme }) => ({
 // //   minHeight: '100vh',
@@ -30,10 +30,12 @@ import { styled } from '@mui/system';
 
 
 const ReadMoreButton = styled(Button)(({ theme }) => ({
-  backgroundColor: '#0088cc',
+  backgroundColor: '#0288D1',
   color: 'white',
   '&:hover': {
-    backgroundColor: '#006699',
+    // backgroundColor: '#006699',
+    backgroundColor: '#ffff',
+    color: 'black',
   },
   alignContent:'center',
   borderRadius: '999999px',
@@ -161,7 +163,7 @@ const WhyChooseUs: React.FC = () => {
             display: "flex",
             justifyContent: "center",
           }}>
-          <ReadMoreButton variant="contained" size="large">
+          <ReadMoreButton variant="contained" size="large" sx={{ mt: 4 }}>
             Read More
           </ReadMoreButton>
           </Box>

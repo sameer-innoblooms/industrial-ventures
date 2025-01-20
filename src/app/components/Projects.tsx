@@ -9,32 +9,32 @@ interface Projects{
     image: string
 }
 
-const projects: Projects[]=[
+const projects: Projects[] = [
     {
-        id:1,
-        title: 'MUNICIPAL PROJECT',
-        description: 'CHANGING ISLAND SEWAGE PURIFICATION',
-        image: '/Image1.jpg',
+      id: 1,
+      title: 'MUNICIPAL PROJECT',
+      description: 'Changing Island Sewage Purification',
+      image: '/project1.jpg',
     },
     {
-        id:2,
-        title: 'MUNICIPAL PROJECT',
-        description: 'WUXING DEVELOPMENT WEST DISTRICT',
-        image: '/Image2.jpg',
+      id: 2,
+      title: 'MUNICIPAL PROJECT',
+      description: 'Wuxing Development West District',
+      image: '/project2.jpg',
     },
     {
-        id:3,
-        title: 'MUNICIPAL PROJECT',
-        description: 'POYANG LAKE BASIN SEWAGE TREATMENT PLANT',
-        image: '/Image1.jpg',
+      id: 3,
+      title: 'MUNICIPAL PROJECT',
+      description: 'Poyang Lake Basin Sewage Treatment Plant',
+      image: '/project3.jpg',
     },
     {
-        id:4,
-        title: 'MUNICIPAL PROJECT',
-        description: 'DALIAN EXCHANGE ISLAND WATER PURIFICATION PLANT',
-        image: '/Image2.jpg',
+      id: 4,
+      title: 'MUNICIPAL PROJECT',
+      description: 'Dalian Exchange Island Water Purification Plant',
+      image: '/project4.jpg',
     },
-]
+  ]
 
 const Projects = () => {
   return (

@@ -9,7 +9,7 @@ function Home() {
   const SliderDetails: any = [
     {
       image:
-        "/Image1.jpg",
+        "/Background1.jpg",
       tabContent: {
         text1: "A green environment is ",
         text2: "responsible for the future",
@@ -20,7 +20,7 @@ function Home() {
     },
     {
       image:
-        "/Image2.jpg",
+        "/Background2.png",
       tabContent: {
         text1: "Create A Green Environment ",
         text2: "And Take Responsibility For",

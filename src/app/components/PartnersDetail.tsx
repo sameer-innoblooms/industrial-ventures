@@ -15,7 +15,8 @@ export default function Partners({ partnerDetails }: any) {
           backgroundPosition: "center",
           objectFit: "cover",
           opacity: 1, 
-          marginInline: "5px",
+          mx: 1,
+          // marginInline: "5px",
         //   bgcolor: 'red'
         }}
       >

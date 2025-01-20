@@ -1,7 +1,7 @@
 
 //@ts-check
 "use client"
-import { Box, Typography } from "@mui/material";
+import { Box, Typography, Container } from "@mui/material";
 import React from "react";
 import Slider from "react-slick";
 import Partners from "./PartnersDetail";
@@ -125,7 +125,8 @@ const OurPartners: React.FC = () => {
       </Box>
 
       <Box sx={{ mt: 5, mb: 5 }}>
-          <Slider {...settings}
+        <Container maxWidth="xl">
+        <Slider {...settings}
           >
             {partnerDetails.map((item, index) => {
               return (
@@ -133,6 +134,8 @@ const OurPartners: React.FC = () => {
               );
             })}
           </Slider>
+        </Container>
+    
        
       </Box>
     </Box>

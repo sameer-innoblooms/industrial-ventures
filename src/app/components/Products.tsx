@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import { Container, Typography, Grid, Box, Button, Slide } from "@mui/material";
+import { Container, Typography, Grid, Box, Button, Slide, createTheme, ThemeProvider } from "@mui/material";
 import WaterPumpIcon from "@mui/icons-material/Water";
 import RecyclingIcon from "@mui/icons-material/Recycling";
 import ElectricalServicesIcon from "@mui/icons-material/ElectricalServices";
@@ -15,6 +15,7 @@ interface ProductCategory {
   image: string;
   description: string;
 }
+
 
 const categories: ProductCategory[] = [
   {
@@ -61,8 +62,15 @@ export default function Products() {
     delay: 1000
   });
 
+  const theme = createTheme({
+    typography: {
+      // fontFamily: ["Train One", "cursive"].join(","),
+    },
+  });
+
   return (
-    <Container maxWidth="lg" sx={{ py: 8 }}>
+    <ThemeProvider theme={theme}>
+      <Container maxWidth="lg" sx={{ py: 8 }}>
       <Typography
         variant="h2"
         component="h1"
@@ -151,7 +159,7 @@ export default function Products() {
               flexDirection: "column",
               justifyContent: "center",
             }}
-          >
+          > 
             <Slide direction="right" in={inView} timeout={1000}>
               <Box>
                 <Typography
@@ -162,7 +170,9 @@ export default function Products() {
                 >
                   {activeCategory.title}
                 </Typography>
-                <Typography variant="body1">
+                <Typography variant="body1" sx={{
+                  mt: 1
+                }}>
                   {activeCategory.description}
                 </Typography>
                 <Button
@@ -173,6 +183,7 @@ export default function Products() {
                     "&:hover": {
                       bgcolor: "#01579b",
                     },
+                    mt: 4,
                   }}
                 >
                   Read More
@@ -183,5 +194,7 @@ export default function Products() {
         </Grid>
       </Grid>
     </Container>
+    </ThemeProvider>
+    
   );
 }

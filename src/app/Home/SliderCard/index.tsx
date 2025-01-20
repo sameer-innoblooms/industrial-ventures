@@ -41,7 +41,7 @@ const SliderCard: React.FC<SliderCardProps> = ({ item, index }: any) => {
         width: "100%",
         backgroundImage: `url(${item.image})`,
         backgroundSize: "cover",
-        backgroundPosition: "center center",
+        // backgroundPositionY: item.image.includes("Background2") ? 50 : "center",
         backgroundRepeat: "no-repeat",
         transition: "background-size 0.5s ease",
         position: "relative",
