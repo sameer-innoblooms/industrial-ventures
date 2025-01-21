@@ -122,8 +122,23 @@ import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import MoneyIcon from "@mui/icons-material/Money";
 import LocalShippingIcon from "@mui/icons-material/LocalShipping";
 import PaymentsIcon from "@mui/icons-material/Payments";
-import { useEffect, useState } from "react";
 import Image from "next/image";
+import Carousel from "react-material-ui-carousel";
+
+const responsive = {
+  desktop: {
+    breakpoint: { max: 3000, min: 1024 },
+    items: 1,
+  },
+  tablet: {
+    breakpoint: { max: 1024, min: 464 },
+    items: 1,
+  },
+  mobile: {
+    breakpoint: { max: 464, min: 0 },
+    items: 1,
+  },
+};
 
 export default function Hero() {
   const images = [
@@ -145,15 +160,15 @@ export default function Hero() {
     // Add more image objects as needed
   ];
 
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  // const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
-    }, 2000);
+  // useEffect(() => {
+  //   const interval = setInterval(() => {
+  //     setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
+  //   }, 2000);
 
-    return () => clearInterval(interval);
-  }, []);
+  //   return () => clearInterval(interval);
+  // }, []);
 
   return (
     <Box
@@ -161,7 +176,8 @@ export default function Hero() {
         position: "relative",
         bgcolor: "#f8f9fa",
         pt: 8,
-        pb: 20,
+        // pb: 20,
+        
       }}
     >
       <Container>
@@ -206,8 +222,40 @@ export default function Hero() {
           </Grid>
 
           <Grid item xs={12} md={6}>
-            <Card
-             sx={{ maxWidth: 400, mx: "auto", backgroundColor: "transparent" }}>
+            {/*@ts-ignore*/}
+          <Carousel responsive={responsive} infinite={true} autoPlay={true} autoPlaySpeed={2000} showDots={false} arrows={false} 
+          
+          > 
+
+              {images.map((obj,index)=>(
+                <Card
+                key={index}
+                sx={{ maxWidth: 400, mx: "auto", backgroundColor: "transparent" }}>
+                  <Image
+                  src={obj.url}
+                  alt="Product Image"
+                  width={400}
+                  height={300}
+                  objectFit="fit"
+                  />
+                  <CardContent>
+                    <Typography gutterBottom variant="h5" component="h2">
+                    {obj.title}
+                    </Typography>
+                    <Typography variant="body2" color="text.secondary">
+                    {obj.description}
+                    </Typography>
+                    <Typography variant="caption" color="text.secondary">
+                      Best Price
+                    </Typography>
+                    {/* <Typography variant="h4" color="primary" fontWeight="bold">
+                      $30.00
+                    </Typography> */}
+                  </CardContent>
+                  </Card>
+              )                
+              )}
+              </Carousel>
               {/* <CardMedia
               
                 component="img"
@@ -218,32 +266,12 @@ export default function Hero() {
                   background: 'transpareny'
                  }}
               /> */}
-              <Image
-              src={images[currentImageIndex].url}
-              alt="Product Image"
-              width={400}
-              height={300}
-              objectFit="fit"
-              />
-              <CardContent>
-                <Typography gutterBottom variant="h5" component="h2">
-                {images[currentImageIndex].title}
-                </Typography>
-                <Typography variant="body2" color="text.secondary">
-                {images[currentImageIndex].description}
-                </Typography>
-                <Typography variant="caption" color="text.secondary">
-                  Best Price
-                </Typography>
-                {/* <Typography variant="h4" color="primary" fontWeight="bold">
-                  $30.00
-                </Typography> */}
-              </CardContent>
-            </Card>
+              
+           
           </Grid>
         </Grid>
 
-        <Grid container spacing={4} sx={{ mt: 4 }}>
+        <Grid container spacing={4} sx={{ mt: 4, mb: 4 }}>
           {[
             {
               icon: <MoneyIcon sx={{ fontSize: 40, color: "#1C4B84" }} />,

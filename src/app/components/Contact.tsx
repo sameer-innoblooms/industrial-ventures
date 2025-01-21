@@ -1,20 +1,21 @@
-import { Box, Button, TextField, Typography } from "@mui/material";
+import { Box, Button, makeStyles, TextField, Typography } from "@mui/material";
 import Image from "next/image";
 import React from "react";
+import "./globls.css"
 
 const Contact = () => {
   return (
-    <Box 
-    sx={{
-        display: 'flex',
-    }}
+    <Box
+      sx={{
+        display: "flex",
+      }}
     >
       <Box
         sx={{
           width: "50%",
           height: "auto",
           bgcolor: "red",
-          backgroundImage: "url(/contact.jpg)",
+          backgroundImage: "url(/Store.jpg)",
           backgroundSize: "cover",
           backgroundPositionY: "center",
         }}
@@ -32,15 +33,12 @@ const Contact = () => {
           width: "50%",
           height: "auto",
           // bgcolor: "#0085cb",
-          bgcolor: '#1C4B84',
+          bgcolor: "#1C4B84",
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
           paddingBlock: 10,
-          
         }}
-
-
       >
         <Box
           sx={{
@@ -52,59 +50,44 @@ const Contact = () => {
           }}
         >
           <Typography
-            textAlign={"left"}
-            sx={{
-              display: "flex",
-              // justifyContent: "center",
-              // alignItems: "center",
-              height: "100%",
-              color: "white",
-              fontSize: "18px",
-              textAlign: "left",
-            }}
+            variant="subtitle1"
+            sx={{ textAlign: "left", color: "white", mb: 1 }}
           >
-            TALK TO US WE ARE IN YOU SIDE
+            TALK WITH US TO GET THE BEST DEALS IN THE MARKET
           </Typography>
           <Typography
-            textAlign={"left"}
-            sx={{
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              height: "100%",
-              color: "white",
-              fontSize: "48px",
-              textAlign: "left",
-              lineHeight: 1.2
-
-            }}
+            variant="h4"
+            component="h2"
+            fontWeight="bold"
+            gutterBottom
+            sx={{ textAlign: "left", mb: 1, color: "white" }}
           >
-            WE WELCOME ALL TYPES OF PROJECTS BIG OR SMALL
-          </Typography>
+              WE WELCOME ALL TYPES OF QUERY RELATED TO PRODUCTS
+            </Typography>
           <Typography
-            textAlign={"left"}
-            sx={{
-              height: "100%",
-              color: "white",
-              fontSize: "12px",
-              textAlign: "left",
-            }}
+            variant="subtitle2"
+            sx={{ textAlign: "left", color: "white", mb: 1 }}
           >
-           If you are interested in our products, please leave your email and we will contact you as soon as possible, thank you!
+            WE ARE HERE TO SOLVE ALL TYPE OF DOUBTS
           </Typography>
 
-          <Box sx={{ display: "grid", gap: 2, gridTemplateColumns: "1fr 1fr", mt: 2 }}>
+          <Box
+            sx={{
+              display: "grid",
+              gap: 2,
+              gridTemplateColumns: "1fr 1fr",
+              mt: 2,
+            }}
+          >
             <TextField
               required
               label="First Name"
               variant="outlined"
-              
               fullWidth
               sx={{
-                bgcolor: 'white',
-                borderRadius: 1
+                bgcolor: "white",
+                borderRadius: 1,
               }}
-              
             />
             <TextField
               required
@@ -112,33 +95,44 @@ const Contact = () => {
               variant="outlined"
               fullWidth
               sx={{
-                bgcolor: 'white',
-                borderRadius: 1
+                bgcolor: "white",
+                borderRadius: 1,
               }}
             />
-            <TextField required label="Mobile" variant="outlined" fullWidth sx={{
-                bgcolor: 'white',
-                borderRadius: 1
-              }} />
-            <TextField required label="Email" variant="outlined" fullWidth sx={{
-                bgcolor: 'white',
-                borderRadius: 1
-              }} />
+            <TextField
+              required
+              label="Mobile"
+              variant="outlined"
+              fullWidth
+              sx={{
+                bgcolor: "white",
+                borderRadius: 1,
+              }}
+            />
             <TextField
               required
               label="Email"
               variant="outlined"
-              sx={{ gridColumn: "1 / 3", bgcolor: 'white',
-                borderRadius: 1
-               }}
+              fullWidth
+              sx={{
+                bgcolor: "white",
+                borderRadius: 1,
+              }}
+            />
+            <TextField
+              required
+              label="Email"
+              variant="outlined"
+              sx={{ gridColumn: "1 / 3", bgcolor: "white", borderRadius: 1 }}
             />
             <Button
               type="submit"
               variant="contained"
               sx={{
+                border: "1px solid white",
                 // bgcolor: "#0277bd",
                 // bgcolor: "rgb(0, 73, 113)",
-                bgcolor: '#052851',
+                bgcolor: "#1C4B84",
                 py: 1.5,
                 // "&:hover": {
                 //   bgcolor: "#007bff",
