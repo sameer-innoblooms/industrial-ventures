@@ -200,226 +200,260 @@ import {
   ThemeProvider,
   Typography,
 } from "@mui/material";
+import { useAnimation, motion } from "framer-motion";
+import Image from "next/image";
+import { useEffect } from "react";
+import { useInView } from "react-intersection-observer";
+import AnimationUp from "./AnimationUp";
+import AnimationRight from "./AnimationRight";
+import theme from "../theme";
 
-const theme = createTheme({
-  palette: {
-    primary: {
-      main: "#1C4B84",
-    },
-  },
-});
+
+
+const arrow = {
+  initial: { rotate: 0, scale: 1 },
+  animate: { rotate: 90, scale: 1.5 },
+};
 
 const AdditionalProducts = () => (
   <ThemeProvider theme={theme}>
-    <Container maxWidth="lg" sx={{
-      p:2
-    }}>
-      <Box
-        sx={{
-          display: "grid",
-          gridTemplateAreas: '"b1 b1 b2" "b3 b4 b2" "b3 b4 b2"',
-          gap: 2, // Optional gap between grid items
-        }}
-      >
+    <Container
+      maxWidth="lg"
+      sx={{
+        p: 2,
+      }}
+    >
+      <AnimationUp>
         <Box
           sx={{
-            gridArea: "b1",
-            // border: "2px solid red",
-          }}
-        >
-          <Typography
-            sx={{
-              color: "primary.main",
-              fontSize: "0.875rem",
-              mb: 1,
-            }}
-          >
-            Additional Product
-          </Typography>
-          <Typography
-            variant="h4"
-            sx={{
-              fontWeight: "bold",
-              mb: 3,
-            }}
-          >
-            Best Quality Product
-          </Typography>
-        </Box>
-
-        <Box
-          sx={{
-            gridArea: "b2",
-            // border: "2px solid red",
+            display: "grid",
+            gridTemplateAreas: '"b1 b1 b2" "b3 b4 b2" "b3 b4 b2"',
+            gap: 2, // Optional gap between grid items
           }}
         >
           <Box
             sx={{
-              position: "relative",
-              p: 4,
-              height: "100%",
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "center",
-              color: "white",
-              bgcolor: "primary.main",
-              backgroundImage: 'url(/Light.png)',
-              backgroundPositionY: 73,
-              "&::before": {
-          content: '""',
-          position: "absolute",
-          top: 0,
-          left: 0,
-          right: 0,
-          bottom: 0,
-          backgroundColor: "rgba(28, 75, 132, 0.81)",
-          zIndex: 0,
-          borderRadius: 5,
-
-        },
-        borderRadius: 5,
-
+              gridArea: "b1",
+              // border: "2px solid red",
             }}
           >
-            <Typography variant="h4" sx={{ mb: 2, textAlign: "center", zIndex: 1 }}>
-              Best Product Deals
-            </Typography>
-            <Typography sx={{ mb: 3, textAlign: "center", zIndex: 1 }}>
-              Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean
-              commodo ligula eget dolor.
-            </Typography>
-            <Button
-              variant="outlined"
+            <Typography
               sx={{
                 color: "primary.main",
-                bgcolor: "white",
-                borderColor: "white",
-                alignSelf: "center",
-                "&:hover": {
+                fontSize: "0.875rem",
+                mb: 1,
+              }}
+            >
+              Additional Product
+            </Typography>
+            <Typography
+              variant="h4"
+              sx={{
+                fontWeight: "bold",
+                mb: 3,
+                color: 'text.primary'
+              }}
+            >
+              Best Quality Product
+            </Typography>
+          </Box>
+
+          <Box
+            sx={{
+              gridArea: "b2",
+              // border: "2px solid red",
+            }}
+          >
+            <Box
+              sx={{
+                position: "relative",
+                p: 4,
+                height: "95%",
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "center",
+                color: "white",
+                bgcolor: "primary.main",
+                backgroundImage: "url(/Light.png)",
+                backgroundPositionY: 73,
+                "&::before": {
+                  content: '""',
+                  position: "absolute",
+                  top: 0,
+                  left: 0,
+                  right: 0,
+                  bottom: 0,
+                  backgroundColor: "rgba(45, 32, 34, 0.81)",
+                  zIndex: 0,
+                  borderRadius: 5,
+                },
+                borderRadius: 5,
+              }}
+            >
+              
+              <Typography
+                variant="h4"
+                sx={{ mb: 2, textAlign: "center", zIndex: 1 }}
+              >
+                Best Product Deals
+              </Typography>
+              <Typography sx={{ mb: 3, textAlign: "center", zIndex: 1 }}>
+                We have the best deals on the best products.
+                <br /> Check them out!
+              </Typography>
+
+             
+              
+              <Button
+                variant="outlined"
+                sx={{
+                  color: "primary.main",
+                  bgcolor: "white",
                   borderColor: "white",
-                  bgcolor: "rgba(255,255,255,0.1)",
-                },
-              }}
-            >
-              SEE PRODUCT
-            </Button>
-          </Box>
-        </Box>
+                  alignSelf: "center",
+                  "&:hover": {
+                    borderColor: "white",
+                    color: 'white',
+                    bgcolor: "rgba(255,255,255,0.1)",
+                  },
+                }}
+              >
+                SEE PRODUCT
+              </Button>
+              <motion.div
+                initial="initial"
+                animate="initial"
+                whileHover="animate"
+                style={{
+                  flexDirection: "row",
+                  display: "flex",
+                  alignItems: "center",
+                }}
+              ></motion.div>
+              <motion.div variants={arrow}>
+                <Box
+                  sx={{
+                    position: "absolute",
+                    zIndex: 1,
+                    height: "100px",
+                    width: "100px",
+                    bottom: 20,
 
-        <Box
-          sx={{
-            gridArea: "b3",
-            // border: "2px solid red",
-          }}
-        >
-          <Box
-            sx={{
-              bgcolor: "white",
-              borderRadius: 1,
-              boxShadow: 1,
-              p: 2,
-              height: "100%",
-              display: "flex",
-              flexDirection: "column",
-            }}
-          >
-            <Box
-              component="img"
-              src="/Light.png"
-              alt="Light"
-              sx={{
-                width: "100%",
-                height: 200,
-                objectFit: "contain",
-                mb: 2,
-              }}
-            />
-            <Box sx={{ textAlign: "center", mb: 2, flexGrow: 1 }}>
-              <Typography variant="h6" sx={{ mb: 1 }}>
-                Light
-              </Typography>
+                    right: 200,
+                  }}
+                >
+                  <Image
+                    src="/FloodLight.png"
+                    alt="Cables"
+                    height={200}
+                    width={200}
+                  />
+                </Box>
+              </motion.div>
             </Box>
-            <Button
-              variant="contained"
-              fullWidth
-              sx={{
-                bgcolor: "primary.main",
-                color: "white",
-                "&:hover": {
-                  bgcolor: "primary.dark",
-                },
-              }}
-            >
-              ADD TO CART
-            </Button>
           </Box>
-        </Box>
 
-        <Box
-          sx={{
-            gridArea: "b4",
-            // border: "2px solid red",
-          }}
-        >
           <Box
             sx={{
-              bgcolor: "white",
-              borderRadius: 1,
-              boxShadow: 1,
-              p: 2,
-              height: "100%",
-              display: "flex",
-              flexDirection: "column",
-              position: "relative",
+              gridArea: "b3",
+              // border: "2px solid red",
             }}
           >
             <Box
               sx={{
-                position: "absolute",
-                top: 16,
-                right: 16,
-                bgcolor: "primary.main",
-                color: "white",
-                px: 1,
-                py: 0.5,
+                bgcolor: "white",
                 borderRadius: 1,
-                fontSize: "0.75rem",
+                boxShadow: 1,
+                p: 2,
+                height: "100%",
+                display: "flex",
+                flexDirection: "column",
+                maxHeight: 300,
               }}
             >
-              40% SALE
+              <Box
+                component="img"
+                src="/Light.png"
+                alt="Light"
+                sx={{
+                  width: "100%",
+                  height: 200,
+                  objectFit: "contain",
+                  mb: 2,
+                }}
+              />
+              <Box sx={{ textAlign: "center", mb: 0 }}>
+                <Typography variant="h6" sx={{ mb: 0, pt: 2 }}>
+                  Light
+                </Typography>
+              </Box>
+              {/* <Button
+                variant="contained"
+                fullWidth
+                sx={{
+                  bgcolor: "primary.main",
+                  color: "white",
+                  "&:hover": {
+                    bgcolor: "primary.dark",
+                  },
+                }}
+              >
+                ADD TO CART
+              </Button> */}
             </Box>
+          </Box>
+
+          <Box
+            sx={{
+              gridArea: "b4",
+              // border: "2px solid red",
+            }}
+          >
             <Box
-              component="img"
-              src="/Motor.jpeg"
-              alt="Toolbox"
               sx={{
-                width: "100%",
-                height: 200,
-                objectFit: "contain",
-                mb: 2,
-              }}
-            />
-            <Box sx={{ textAlign: "center", mb: 2, flexGrow: 1 }}>
-              <Typography variant="h6" sx={{ mb: 1 }}>
-                Motor
-              </Typography>
-            </Box>
-            <Button
-              variant="contained"
-              fullWidth
-              sx={{
-                bgcolor: "primary.main",
-                color: "white",
-                "&:hover": {
-                  bgcolor: "primary.dark",
-                },
+                bgcolor: "white",
+                borderRadius: 1,
+                boxShadow: 1,
+                p: 2,
+                height: "100%",
+                display: "flex",
+                flexDirection: "column",
+                maxHeight: 300,
               }}
             >
-              ADD TO CART
-            </Button>
+              <Box
+                component="img"
+                src="/Motor.jpeg"
+                alt="Light"
+                sx={{
+                  width: "100%",
+                  height: 200,
+                  objectFit: "contain",
+                  mb: 2,
+                }}
+              />
+              <Box sx={{ textAlign: "center", mb: 0 }}>
+                <Typography variant="h6" sx={{ mb: 0, pt: 2 }}>
+                  Motor
+                </Typography>
+              </Box>
+              {/* <Button
+                variant="contained"
+                fullWidth
+                sx={{
+                  bgcolor: "primary.main",
+                  color: "white",
+                  "&:hover": {
+                    bgcolor: "primary.dark",
+                  },
+                }}
+              >
+                ADD TO CART
+              </Button> */}
+            </Box>
           </Box>
         </Box>
-      </Box>
+      </AnimationUp>
     </Container>
   </ThemeProvider>
 );

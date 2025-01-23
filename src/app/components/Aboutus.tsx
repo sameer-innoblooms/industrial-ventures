@@ -3,9 +3,10 @@
 import type React from "react"
 import { useEffect, useRef, useState } from "react"
 import Container from "@mui/material/Container"
-import { Box, Grid, Typography } from "@mui/material"
+import { Box, Grid, ThemeProvider, Typography } from "@mui/material"
 import { motion, useAnimation } from "framer-motion"
 import { useInView } from "react-intersection-observer"
+import theme from "../theme"
 
 interface StatProps {
   end: number
@@ -63,16 +64,16 @@ const AnimatedStat: React.FC<StatProps> = ({ end, suffix = "", label }) => {
 
   return (
     <Box ref={ref} textAlign="center">
-      <Typography variant="h3" component="div" fontWeight="bold">
+      <Typography variant="h3" component="div" fontWeight="bold" color="text.primary">
         {count}
-        <Box component="span" color="#1C4B84" fontSize="30px">
+        <Box component="span" color="primary.main" fontSize="30px">
           {suffix}
         </Box>
       </Typography>
       <Typography
         variant="body1"
         sx={{
-          color: "#7A7A7A",
+          color: "text.secondary",
         }}
       >
         {label}
@@ -90,14 +91,14 @@ const AnimatedHeading: React.FC<{ children: React.ReactNode }> = ({ children }) 
 
   useEffect(() => {
     if (inView) {
-      controls.start({ y: 0, opacity: 1 })
+      controls.start({ x: 0, opacity: 1 })
     }
   }, [controls, inView])
 
   return (
     <motion.div
       ref={ref}
-      initial={{ y: -50, opacity: 0 }}
+      initial={{ x: -500, opacity: 0 }}
       animate={controls}
       transition={{ duration:1, ease: "easeOut" }}
     >
@@ -109,7 +110,9 @@ const AnimatedHeading: React.FC<{ children: React.ReactNode }> = ({ children }) 
 export default function Aboutus() {
   return (
     <>
-      <Container
+
+    <ThemeProvider theme={theme}>
+    <Container
         maxWidth="lg"
         sx={{
           p: 2,
@@ -123,7 +126,7 @@ export default function Aboutus() {
             sx={{
               textAlign: "center",
               fontWeight: "bold",
-              color: "#1C4B84",
+              color: "primary.main",
             }}
           >
             About us
@@ -135,9 +138,10 @@ export default function Aboutus() {
             textAlign: "center",
             mt: 3,
             fontWeight: "bold",
+            color: 'text.primary'
           }}
         >
-          5000+ Buyers Across The World
+          5000+ Clients Across The Country
         </Typography>
 
         <Grid
@@ -167,6 +171,8 @@ export default function Aboutus() {
         </Grid>
         </AnimatedHeading>
       </Container>
+    </ThemeProvider>
+
     </>
   )
 }

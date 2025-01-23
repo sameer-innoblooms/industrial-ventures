@@ -1,11 +1,15 @@
-import { Box, Button, makeStyles, TextField, Typography } from "@mui/material";
-import Image from "next/image";
+'use client'
+import { Box, Button, TextField, ThemeProvider, Typography } from "@mui/material";
 import React from "react";
 import "./globls.css"
+import AnimationUp from "./AnimationUp";
+import theme from "../theme";
 
 const Contact = () => {
   return (
-    <Box
+    <ThemeProvider theme={theme}>
+          <AnimationUp>
+      <Box
       sx={{
         display: "flex",
       }}
@@ -33,7 +37,7 @@ const Contact = () => {
           width: "50%",
           height: "auto",
           // bgcolor: "#0085cb",
-          bgcolor: "#1C4B84",
+          bgcolor: "primary.main",
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
@@ -132,7 +136,7 @@ const Contact = () => {
                 border: "1px solid white",
                 // bgcolor: "#0277bd",
                 // bgcolor: "rgb(0, 73, 113)",
-                bgcolor: "#1C4B84",
+                bgcolor: "primary.main",
                 py: 1.5,
                 // "&:hover": {
                 //   bgcolor: "#007bff",
@@ -147,6 +151,9 @@ const Contact = () => {
         </Box>
       </Box>
     </Box>
+    </AnimationUp>
+    </ThemeProvider>
+
   );
 };
 

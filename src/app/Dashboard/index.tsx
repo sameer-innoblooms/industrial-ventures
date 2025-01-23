@@ -9,37 +9,36 @@ import ChooseUs from "../components/ChooseUs";
 import Promotions from "../components/Promotion";
 import Membership from "../components/Membership";
 import Blog from "../components/Blogs";
-import AdditionalProduct from "../components/AditionalProducts";
-import GridComponent from "../components/AditionalProducts";
 import Aboutus from "../components/Aboutus";
-
-
+import AdditionalProducts from "../components/AditionalProducts";
+import Animation from "../components/AnimationUp";
 
 function Dashboard() {
   return (
-
     <Box>
       {/* <Home /> */}
       {/* <Navbar/> */}
-      <Hero/>
-      <Aboutus/>
+      <Hero />
+      <Aboutus />
       {/* <ProjectsPage/> */}
-      <BestSeller/>
-      <ChooseUs/>
+      <BestSeller />
+      <ChooseUs />
       {/* <AdditionalProduct/> */}
-      <GridComponent/>
-       <Promotions/>
+      <AdditionalProducts />
+      <Promotions />
       {/* <Products/> */}
       {/* <ProductSlider/> */}
       {/* <Projects/> */}
       {/* <WhyChooseUs/> */}
-      
+
       {/* <OurPartners/> */}
       {/* <Testimonials/> */}
       {/* <Testimonials/> */}
-      <Membership/>
-      <Blog/>
-      <Contact/>
+      <Membership />
+      <Blog />
+
+      <Contact />
+
       {/* <NewsCarousel/> */}
       {/* <ProductCarousel/> */}
       {/* <Services /> */}

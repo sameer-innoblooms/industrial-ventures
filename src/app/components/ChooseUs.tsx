@@ -11,10 +11,15 @@ import {
   ListItem,
   ListItemIcon,
   ListItemText,
+  ThemeProvider,
 } from '@mui/material'
 import CheckCircleIcon from '@mui/icons-material/CheckCircle'
 import VerifiedUserIcon from '@mui/icons-material/VerifiedUser'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import { useAnimation, motion } from 'framer-motion'
+import { useInView } from 'react-intersection-observer'
+import AnimationRight from './AnimationRight'
+import theme from '../theme'
 
 const features = [
   { label: 'Money Back Guarantee', value: 90 },
@@ -26,6 +31,33 @@ const benefits = [
   'Best Quality Product',
   'Commitment to Customers',
 ]
+
+const Animation: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+  const controls = useAnimation()
+  const [ref, inView] = useInView
+  ({
+    triggerOnce: true,
+    threshold: 0.1,
+  })
+
+  useEffect(() => {
+    if (inView) {
+      controls.start({ y: 0, opacity: 1 })
+    }
+  }, [controls, inView])
+
+  return (
+    <motion.div
+      ref={ref}
+      initial={{ y: -50, opacity: 0 }}
+      animate={controls}
+      transition={{ duration:1, ease: "easeOut" }}
+    >
+      {children}
+    </motion.div>
+  )
+}
+
 
 export default function ChooseUs() {
     const [loading, setLoading] = useState(true);
@@ -61,8 +93,10 @@ export default function ChooseUs() {
 
 
   return (
-    <Box sx={{ bgcolor: '#f8f9fa', py: 8 }}>
+    <ThemeProvider theme={theme}>
+          <Box sx={{ bgcolor: '#f8f9fa', py: 8 }}>
       <Container maxWidth="xl">
+        <Animation>
         <Grid container spacing={4}>
           <Grid item xs={12} md={6}>
             <Box
@@ -77,24 +111,28 @@ export default function ChooseUs() {
             />
           </Grid>
           <Grid item xs={12} md={6}>
+            <AnimationRight>
+
+           
             <Typography variant="subtitle1"  gutterBottom sx={{
-                color: "#1C4B84"
+                color: "primary.main"
             }}>
               Why Choose Us
             </Typography>
-            <Typography variant="h4" component="h2" fontWeight="bold" gutterBottom>
+            <Typography variant="h4" component="h2" fontWeight="bold" color='text.primary' gutterBottom>
               We Are Best Electrical and Mechanical Store in Town
             </Typography>
             <Typography color="text.secondary" paragraph>
               We provide the best quality products at the best price. We have a wide range of products from many brands. We are committed to providing the best service to our customers.
             </Typography>
-
-            <Box sx={{bgcolor: "#1C4B84" , p: 3, borderRadius: 2, color: 'white', mb: 4 }}>
+            </AnimationRight>
+            <Box sx={{bgcolor: "primary.main" , p: 3, borderRadius: 2, color: 'white', mb: 4 }}>
               <VerifiedUserIcon sx={{ fontSize: 40, mb: 2 }} />
               <Typography variant="h6" gutterBottom>
                 We Provide The Best Guarantee For You Loyal Customers
               </Typography>
             </Box>
+           
 
             <Box sx={{ mb: 4 }}>
               {features.map((feature) => (
@@ -124,7 +162,7 @@ export default function ChooseUs() {
                 <ListItem key={benefit} disableGutters>
                   <ListItemIcon>
                     <CheckCircleIcon sx={{
-                        color: "#1C4B84",
+                        color: "primary.main",
                     }} />
                   </ListItemIcon>
                   <ListItemText primary={benefit} />
@@ -135,13 +173,17 @@ export default function ChooseUs() {
             <Button
               variant="contained"
               size="large"
-              sx={{ mt: 4 , bgcolor: "#1C4B84"}}
+              sx={{ mt: 4 , bgcolor: "primary.main"}}
             >
-              SHOP NOW
+              VISIT US
             </Button>
           </Grid>
         </Grid>
+        </Animation>
+        
       </Container>
     </Box>
+    </ThemeProvider>
+
   )
 }

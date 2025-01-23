@@ -117,6 +117,7 @@ import {
   CardContent,
   Box,
   Stack,
+  ThemeProvider,
 } from "@mui/material";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import MoneyIcon from "@mui/icons-material/Money";
@@ -124,6 +125,14 @@ import LocalShippingIcon from "@mui/icons-material/LocalShipping";
 import PaymentsIcon from "@mui/icons-material/Payments";
 import Image from "next/image";
 import Carousel from "react-material-ui-carousel";
+import { motion, useAnimation } from "framer-motion"
+import { useInView } from "react-intersection-observer";
+import { useEffect } from "react";
+import AnimationLeft from "./AnimationLeft";
+import AnimationRight from "./AnimationRight";
+import AnimationUp from "./AnimationUp";
+import theme from "../theme";
+
 
 const responsive = {
   desktop: {
@@ -139,6 +148,8 @@ const responsive = {
     items: 1,
   },
 };
+
+
 
 export default function Hero() {
   const images = [
@@ -171,19 +182,23 @@ export default function Hero() {
   // }, []);
 
   return (
-    <Box
+    <ThemeProvider theme={theme}>
+      <Box
       sx={{
         position: "relative",
         bgcolor: "#f8f9fa",
-        pt: 8,
+        pt: 5 ,
         // pb: 20,
         
       }}
     >
+      <AnimationUp>
       <Container>
         <Grid container spacing={4} alignItems="center">
+          
           <Grid item xs={12} md={6}>
-            <Typography
+          <AnimationLeft>
+          <Typography
               component="h1"
               variant="h2"
               color="text.primary"
@@ -200,37 +215,43 @@ export default function Hero() {
             </Typography>
             <Stack direction="row" spacing={2}>
               <Button variant="contained" size="large" sx={{
-                bgcolor:"#1C4B84"
+                bgcolor:'background.default'
               }}>
-                SHOP NOW
+                VISIT US
               </Button>
               <Button
                 sx={{
-                 color:"#1C4B84",
+                 
                  border: "1px solid #1C4B84"
                 }}
                 variant="outlined"
                 size="large"
                 endIcon={<ArrowForwardIcon sx={{
-                  color:"#1C4B84"
+                  
                 }} />}
                 
               >
                 VIEW PRODUCT
               </Button>
             </Stack>
+          </AnimationLeft>
+            
+            
           </Grid>
-
+          
+          
           <Grid item xs={12} md={6}>
-            {/*@ts-ignore*/}
-          <Carousel responsive={responsive} infinite={true} autoPlay={true} autoPlaySpeed={2000} showDots={false} arrows={false} 
+          <AnimationRight>
+              {/*@ts-ignore*/}
+            <Carousel responsive={responsive} infinite={true} autoPlay={true} autoPlaySpeed={2000} showDots={false} arrows={false} 
           
           > 
-
+              
               {images.map((obj,index)=>(
                 <Card
                 key={index}
                 sx={{ maxWidth: 400, mx: "auto", backgroundColor: "transparent" }}>
+                 
                   <Image
                   src={obj.url}
                   alt="Product Image"
@@ -239,7 +260,7 @@ export default function Hero() {
                   objectFit="fit"
                   />
                   <CardContent>
-                    <Typography gutterBottom variant="h5" component="h2">
+                    <Typography gutterBottom variant="h5" component="h2" color="text.primary">
                     {obj.title}
                     </Typography>
                     <Typography variant="body2" color="text.secondary">
@@ -252,39 +273,36 @@ export default function Hero() {
                       $30.00
                     </Typography> */}
                   </CardContent>
+
                   </Card>
               )                
               )}
+             
+            
               </Carousel>
-              {/* <CardMedia
-              
-                component="img"
-                height="300"
-                image={images[currentImageIndex]}
-                alt="Product Image"
-                sx={{ objectFit: "fit", backgroundPositionY: 20,
-                  background: 'transpareny'
-                 }}
-              /> */}
+              </AnimationRight>
+           
               
            
           </Grid>
+         
         </Grid>
 
         <Grid container spacing={4} sx={{ mt: 4, mb: 4 }}>
+          
           {[
             {
-              icon: <MoneyIcon sx={{ fontSize: 40, color: "#1C4B84" }} />,
+              icon: <MoneyIcon sx={{ fontSize: 40, color: "background.primary" }} />,
               title: "Big Cashback",
               description: "Over 40% Cashback",
             },
             {
-              icon: <LocalShippingIcon sx={{ fontSize: 40, color: "#1C4B84" }} />,
+              icon: <LocalShippingIcon sx={{ fontSize: 40, color: "background.primary" }} />,
               title: "Fast Shipping",
               description: "Order Over  ₹5000",
             },
             {
-              icon: <PaymentsIcon sx={{ fontSize: 40, color: "#1C4B84" }} />,
+              icon: <PaymentsIcon sx={{ fontSize: 40, color: "background.primary" }} />,
               title: "Quick Payment",
               description: "100% Secure",
             },
@@ -301,7 +319,7 @@ export default function Hero() {
                 <Stack direction="row" spacing={2} alignItems="center">
                   <Box sx={{ color: "primary.main" }}>{feature.icon}</Box>
                   <Box>
-                    <Typography variant="h6" component="h3">
+                    <Typography variant="h6" component="h3" color="text.primary">
                       {feature.title}
                     </Typography>
                     <Typography variant="body2" color="text.secondary">
@@ -310,10 +328,17 @@ export default function Hero() {
                   </Box>
                 </Stack>
               </Card>
+              
             </Grid>
           ))}
+          
+          
         </Grid>
       </Container>
+      </AnimationUp>
+      
     </Box>
+    </ThemeProvider>
+    
   );
 }
