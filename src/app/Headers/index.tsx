@@ -13,7 +13,6 @@ import {
   Stack,
   Drawer,
   List,
-  ListItem,
   ListItemText,
   ListItemButton,
   Collapse,
@@ -22,7 +21,6 @@ import {
 } from "@mui/material";
 import { styled, alpha, ThemeProvider } from "@mui/material/styles";
 import SearchIcon from "@mui/icons-material/Search";
-import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import EmailIcon from "@mui/icons-material/Email";
 import PhoneIcon from "@mui/icons-material/Phone";
 import MenuIcon from "@mui/icons-material/Menu";
@@ -32,6 +30,7 @@ import ExpandMore from "@mui/icons-material/ExpandMore";
 import { useAnimation, motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import Image from "next/image";
+// import Link from "next/link";
 import theme from "../theme";
 
 
@@ -100,7 +99,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 const menuItems = [
   { text: "HOME", href: "/", hasSubmenu: false },
   { text: "ABOUT US", href: "#", hasSubmenu: false },
-  { text: "PRODUCT", href: "#", hasSubmenu: false },
+  { text: "PRODUCT", href: "/product", hasSubmenu: false },
   // { text: 'PAGE', hasSubmenu: true },
   { text: "BLOG", href: "#" },
   { text: "CONTACT", href: "#", hasSubmenu: false },
@@ -123,7 +122,9 @@ export default function Navbar() {
     <Box sx={{ width: 250 }} role="presentation">
       <List>
         {menuItems.map((item) => (
-          <Box key={item.text}>
+          <Box key={item.text} sx={{
+       
+          }}>
             <Link
               href={item.href}
               sx={{
@@ -137,6 +138,7 @@ export default function Navbar() {
                   // primary={item.text}
                   sx={{
                     // color: "black",
+                   
                   }}
                 />
                 {item.hasSubmenu &&
@@ -169,7 +171,7 @@ export default function Navbar() {
     <>
     <ThemeProvider theme={theme}>
     <Animation>
-        <Box sx={{ bgcolor: "#f8f9fa", py: 1 }}>
+        <Box sx={{ bgcolor: "#f8f9fa", py: 1.5 }}>
           <Container>
             <Stack
               direction="row"
@@ -206,11 +208,11 @@ export default function Navbar() {
                 </Stack>
               </Stack>
               <IconButton >
-                <ShoppingCartIcon
+                {/* <ShoppingCartIcon
                   sx={{
                     color: "text.primary",
                   }}
-                />
+                /> */}
               </IconButton>
             </Stack>
           </Container>
@@ -226,7 +228,11 @@ export default function Navbar() {
         >
           <Container>
             <Toolbar disableGutters sx={{ justifyContent: "space-between" }}>
-              <Image src="/Logo.png" alt="Logo" height={100} width={100} />
+              <Link href='/'>
+              <Image  src="/Logo.png" alt="Logo" height={100} width={100} />
+
+              </Link>
+
               <Typography
               variant="h5"
               component="a"
@@ -274,8 +280,13 @@ export default function Navbar() {
                     <Link href={item.href} key={item.text} color="#000">
                       <Button
                         sx={{
-                          bgcolor: 'transparent',
-                          color: 'text.primary'
+                          bgcolor: '#f5f5f5',
+                          color: 'text.primary',
+                          mx: '1px',
+                          ":hover": {
+                            color: 'white',
+                            background: 'primary.main'
+                          }
                         }}
                         endIcon={
                           item.hasSubmenu ? (

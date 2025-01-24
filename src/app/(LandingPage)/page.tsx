@@ -1,9 +1,12 @@
 import { Box, Typography } from '@mui/material'
 import React from 'react'
+import AnimationUp from '../components/AnimationUp'
+import AnimationLeft from '../components/AnimationLeft'
 
 export default function ProductTop(){
   return (
     <>
+    <AnimationUp>
     <Box
         sx={{
           display: "flex",
@@ -20,7 +23,7 @@ export default function ProductTop(){
           position: "relative",
           objectFit: "cover",
           maxHeight: "1500px",
-          backgroundImage: `url(/productBackground.jpg)`,
+          backgroundImage: `url(/Store.jpg)`,
           "&::before": {
             content: '""',
             position: "absolute",
@@ -36,18 +39,24 @@ export default function ProductTop(){
           },
         }}
       >
+        
         <Typography
           variant="h1"
           color="white"
           align="center"
           sx={{
-            zIndex: 9,
+            zIndex: 100,
             mb: 2,
             fontSize: {xs: "2.5rem", sm: "3rem", md: "6rem"},
+            
           }}
         >
+          <AnimationLeft>
           Products
+          </AnimationLeft>
         </Typography>
+        
+
         {/* <Box
           sx={{
             zIndex: 9,
@@ -74,6 +83,9 @@ export default function ProductTop(){
             solutions that suit the needs at every level.
           </Typography> */}
       </Box>
+
+    </AnimationUp>
+
     </>
   )
 }

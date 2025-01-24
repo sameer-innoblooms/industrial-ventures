@@ -125,9 +125,6 @@ import LocalShippingIcon from "@mui/icons-material/LocalShipping";
 import PaymentsIcon from "@mui/icons-material/Payments";
 import Image from "next/image";
 import Carousel from "react-material-ui-carousel";
-import { motion, useAnimation } from "framer-motion"
-import { useInView } from "react-intersection-observer";
-import { useEffect } from "react";
 import AnimationLeft from "./AnimationLeft";
 import AnimationRight from "./AnimationRight";
 import AnimationUp from "./AnimationUp";
@@ -154,12 +151,12 @@ const responsive = {
 export default function Hero() {
   const images = [
     {
-      url: "/Virus.png",
-      title: "Virus killer",
-      description: "A life-saving Device that effectively neutralizes the Coronavirus family of viruses by up to 99.9%.",
+      url: "/FloodLight.png",
+      title: "Flood Light",
+      description: "A large, bright artificial light that emits a wide beam of light. Floodlights illuminate outdoor areas, such as sports fields, parking lots, and buildings.",
     },
     {
-      url: "/Motor.jpeg",
+      url: "/Motor.png",
       title: "Motor",
       description: "A high-quality motor that provides efficient and reliable performance.",
     },
@@ -222,13 +219,17 @@ export default function Hero() {
               <Button
                 sx={{
                  
-                 border: "1px solid #1C4B84"
+                 ":hover .arrow":{
+                  transform: 'translateX(5px)',
+                  transition: 'all 0.3s ease-in-out',
+                
+                }
                 }}
-                variant="outlined"
+                variant="contained"
                 size="large"
-                endIcon={<ArrowForwardIcon sx={{
-                  
-                }} />}
+                endIcon={<ArrowForwardIcon className="arrow" sx={{
+
+}} />}
                 
               >
                 VIEW PRODUCT
@@ -243,7 +244,17 @@ export default function Hero() {
           <Grid item xs={12} md={6}>
           <AnimationRight>
               {/*@ts-ignore*/}
-            <Carousel responsive={responsive} infinite={true} autoPlay={true} autoPlaySpeed={2000} showDots={false} arrows={false} 
+            <Carousel responsive={responsive} showDots={false}
+               infinite={true}
+               autoPlay={true}
+               autoPlaySpeed={2000}
+               keyBoardControl={true}
+               customTransition="transform 500ms ease-in-out"
+               transitionDuration={500}
+               containerClass="carousel-container"
+               removeArrowOnDeviceType={["tablet", "mobile", 'desktop']}
+               dotListClass="custom-dot-list-style"
+               itemClass="carousel-item-padding-40-px"
           
           > 
               

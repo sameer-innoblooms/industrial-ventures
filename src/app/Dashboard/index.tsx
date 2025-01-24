@@ -12,6 +12,7 @@ import Blog from "../components/Blogs";
 import Aboutus from "../components/Aboutus";
 import AdditionalProducts from "../components/AditionalProducts";
 import Animation from "../components/AnimationUp";
+import Clients from "../components/Clients";
 
 function Dashboard() {
   return (
@@ -35,10 +36,11 @@ function Dashboard() {
       {/* <Testimonials/> */}
       {/* <Testimonials/> */}
       <Membership />
-      <Blog />
+      <Clients/>
 
       <Contact />
 
+      <Blog />
       {/* <NewsCarousel/> */}
       {/* <ProductCarousel/> */}
       {/* <Services /> */}

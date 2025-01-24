@@ -47,7 +47,7 @@ const products: Product[] = [
     sale: true,
     salePercentage: 25,
   },
-  { id: 3, name: "Motor", price: 20.0, image: "/Motor.jpeg" },
+  { id: 3, name: "Motor", price: 20.0, image: "/Motor.png" },
   {
     id: 4,
     name: "Boiler Mounting",
@@ -68,7 +68,7 @@ const products: Product[] = [
     id: 6,
     name: "V Belts",
     price: 30.0,
-    image: "/Vbelts.png",
+    image: "/Vbelt.png",
     sale: true,
     salePercentage: 20,
   },
@@ -161,12 +161,16 @@ export default function BestSeller() {
                   flexDirection: "column",
                 }}
               >
-                <Box sx={{ position: "relative" }}>
+                <Box sx={{ position: "relative", height: '100%' }}>
                   <CardMedia
                     component="img"
-                    height="200"
+                    height="200px"
                     image={product.image}
                     alt={product.name}
+                  
+                    sx={{
+                     objectFit: "fit",
+                    }}
                   />
                   {product.sale && (
                     <Chip
@@ -182,8 +186,11 @@ export default function BestSeller() {
                     />
                   )}
                 </Box>
-                <CardContent sx={{ flexGrow: 1 }}>
-                  <Typography gutterBottom variant="h6" component="h3" color="text.primary">
+                <CardContent sx={{ pt: 1, pb: 0 }}>
+                  <Typography gutterBottom  color="text.primary"  sx={{
+                    fontWeight: '10px',
+                    height: '10px'
+                  }}>
                     {product.name}
                   </Typography>
                   {/* <Typography variant="h6" color="primary" fontWeight="bold">

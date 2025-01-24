@@ -10,7 +10,7 @@ import theme from "../theme"
 export default function Footer() {
   return (
     <ThemeProvider theme={theme}>
-          <Box sx={{ bgcolor: "black", color: "white", py: 6 }}>
+          <Box sx={{ bgcolor: "black", color: "white", py: 6  }}>
       <Container maxWidth="lg">
         <Grid container spacing={4}>
           {/* Left Column */}
@@ -20,19 +20,19 @@ export default function Footer() {
             </Typography>
             <Stack spacing={1} sx={{
             }}>
-              <Link href="/privacy-policy" style={{ color: 'white',  textDecoration: "none" }}>
+              <Link href="#" style={{ color: 'white',  textDecoration: "none" }}>
                 Privacy Policy
               </Link>
-              <Link href="/terms" style={{ color: 'white', textDecoration: "none" }}>
+              <Link href="#" style={{ color: 'white', textDecoration: "none" }}>
                 Terms and Conditions
               </Link>
-              <Link href="/disclaimer" style={{ color: 'white', textDecoration: "none" }}>
+              <Link href="#" style={{ color: 'white', textDecoration: "none" }}>
                 Disclaimer
               </Link>
-              <Link href="/support" style={{ color: 'white', textDecoration: "none" }}>
+              <Link href="#" style={{ color: 'white', textDecoration: "none" }}>
                 Support
               </Link>
-              <Link href="/faq" style={{ color: 'white', textDecoration: "none" }}>
+              <Link href="#" style={{ color: 'white', textDecoration: "none" }}>
                 FAQ
               </Link>
             </Stack>
@@ -78,19 +78,19 @@ export default function Footer() {
               Quick Links
             </Typography>
             <Stack spacing={1} textAlign='right'>
-              <Link href="/about" style={{ color: "white", textDecoration: "none" }}>
+              <Link href="#" style={{ color: "white", textDecoration: "none" }}>
                 About Us
               </Link>
-              <Link href="/shop" style={{ color: "white", textDecoration: "none" }}>
+              <Link href="#" style={{ color: "white", textDecoration: "none" }}>
                 Product
               </Link>
-              <Link href="/product" style={{ color: "white", textDecoration: "none" }}>
+              <Link href="#" style={{ color: "white", textDecoration: "none" }}>
                 Blog
               </Link>
-              {/* <Link href="/faq" style={{ color: "white", textDecoration: "none" }}>
+              {/* <Link href="#/faq" style={{ color: "white", textDecoration: "none" }}>
                 FAQ
               </Link> */}
-              <Link href="/contact" style={{ color: "white", textDecoration: "none" }}>
+              <Link href="#" style={{ color: "white", textDecoration: "none" }}>
                 Contact
               </Link>
             </Stack>

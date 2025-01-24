@@ -200,12 +200,10 @@ import {
   ThemeProvider,
   Typography,
 } from "@mui/material";
-import { useAnimation, motion } from "framer-motion";
+import {  motion } from "framer-motion";
 import Image from "next/image";
-import { useEffect } from "react";
-import { useInView } from "react-intersection-observer";
+
 import AnimationUp from "./AnimationUp";
-import AnimationRight from "./AnimationRight";
 import theme from "../theme";
 
 
@@ -423,7 +421,7 @@ const AdditionalProducts = () => (
             >
               <Box
                 component="img"
-                src="/Motor.jpeg"
+                src="/Motor1.jpeg"
                 alt="Light"
                 sx={{
                   width: "100%",
