@@ -1,13 +1,32 @@
-import { Box, Typography } from '@mui/material'
-import React from 'react'
-import AnimationUp from '../components/AnimationUp'
-import AnimationLeft from '../components/AnimationLeft'
+import { Box, Typography } from '@mui/material';
+import React from 'react';
+import { usePathname } from 'next/navigation';  // Import the hook
+import AnimationUp from '../components/AnimationUp';
+import AnimationLeft from '../components/AnimationLeft';
 
-export default function ProductTop(){
+export default function ProductTop() {
+  const pathname = usePathname();  // Get the current route
+
+  // Function to return dynamic text based on the route
+  const getDynamicText = () => {
+    if (pathname === '/product') {
+      return 'Product';
+    }
+    if (pathname === '/about') {
+      return 'About Us';
+    }
+    if (pathname === '/contact') {
+      return 'Contact';
+    }
+    if (pathname === '/blog') {
+      return 'Blog';
+    }
+    return 'Welcome';  // Default text if no route matches
+  };
+
   return (
-    <>
     <AnimationUp>
-    <Box
+      <Box
         sx={{
           display: "flex",
           justifyContent: "center",
@@ -31,15 +50,12 @@ export default function ProductTop(){
             left: 0,
             right: 0,
             bottom: 0,
-            // backgroundColor: "rgba(0, 0, 0, 0.5)", // Black overlay with 50% opacity
             background:
-              "linear-gradient(to bottom, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0))", // Gradient overlay
-
-            zIndex: 1, // Ensure the overlay is above the background image
+              "linear-gradient(to bottom, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0))",
+            zIndex: 1,
           },
         }}
       >
-        
         <Typography
           variant="h1"
           color="white"
@@ -47,46 +63,14 @@ export default function ProductTop(){
           sx={{
             zIndex: 100,
             mb: 2,
-            fontSize: {xs: "2.5rem", sm: "3rem", md: "6rem"},
-            
+            fontSize: { xs: "2.5rem", sm: "3rem", md: "5rem" },
           }}
         >
           <AnimationLeft>
-          Products
+            {getDynamicText()}  {/* Dynamically set the text */}
           </AnimationLeft>
         </Typography>
-        
-
-        {/* <Box
-          sx={{
-            zIndex: 9,
-            width: "700px",
-            display: "flex",
-            justifyContent: "center",
-            justifyItems: "center",
-            alignItems: "center",
-            flexDirection: "column",
-          }}
-        >
-          <Breadcrumb />
-        </Box> */}
-        {/* <Typography
-            variant="body1"
-            color="white"
-            sx={{
-              zIndex: 9,
-              width: '700px'
-            }}
-          >
-            Overcome challenges, tap into opportunities and achieve your
-            business potential. Our experienced consultants provide customized
-            solutions that suit the needs at every level.
-          </Typography> */}
       </Box>
-
     </AnimationUp>
-
-    </>
-  )
+  );
 }
-

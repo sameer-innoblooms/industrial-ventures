@@ -35,6 +35,8 @@ import theme from "../theme";
 
 
 const Animation: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+  const isMobile = useMediaQuery(theme.breakpoints.down("md"));
+
   const controls = useAnimation();
   const [ref, inView] = useInView({
     triggerOnce: true,
@@ -98,11 +100,11 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 
 const menuItems = [
   { text: "HOME", href: "/", hasSubmenu: false },
-  { text: "ABOUT US", href: "#", hasSubmenu: false },
+  { text: "ABOUT US", href: "/about", hasSubmenu: false },
   { text: "PRODUCT", href: "/product", hasSubmenu: false },
   // { text: 'PAGE', hasSubmenu: true },
-  { text: "BLOG", href: "#" },
-  { text: "CONTACT", href: "#", hasSubmenu: false },
+  { text: "BLOG", href: "/blog" },
+  { text: "CONTACT", href: "/contact", hasSubmenu: false },
 ];
 
 export default function Navbar() {
@@ -171,52 +173,7 @@ export default function Navbar() {
     <>
     <ThemeProvider theme={theme}>
     <Animation>
-        <Box sx={{ bgcolor: "#f8f9fa", py: 1.5 }}>
-          <Container>
-            <Stack
-              direction="row"
-              justifyContent="space-between"
-              alignItems="center"
-              spacing={2}
-            >
-              <Stack
-                direction={{ xs: "column", sm: "row" }}
-                spacing={{ xs: 1, sm: 3 }}
-                sx={{ flex: 1 }}
-              >
-                <Stack direction="row" spacing={1} alignItems="center">
-                  <EmailIcon
-                    fontSize="small"
-                    sx={{
-                      color: "text.primary",
-                    }}
-                  />
-                  <Typography variant="body2" noWrap>
-                    industrialventures21@domain.com
-                  </Typography>
-                </Stack>
-                <Stack direction="row" spacing={1} alignItems="center">
-                  <PhoneIcon
-                    fontSize="small"
-                    sx={{
-                      color: "text.primary",
-                    }}
-                  />
-                  <Typography variant="body2" noWrap>
-                    (+91) 8272833134
-                  </Typography>
-                </Stack>
-              </Stack>
-              <IconButton >
-                {/* <ShoppingCartIcon
-                  sx={{
-                    color: "text.primary",
-                  }}
-                /> */}
-              </IconButton>
-            </Stack>
-          </Container>
-        </Box>
+
 
         <AppBar
           position="static"

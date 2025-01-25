@@ -7,6 +7,7 @@ import { usePathname } from 'next/navigation'
 import ProductTop from './page'
 import DashboardLayoutBasic from '../components/SideNav'
 import "./globls.css"
+import Footer from '../Footer'
 
 const drawerWidth = 260
 
@@ -24,6 +25,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
     <ProductTop/>
     {/* <DashboardLayoutBasic/> */}
     {children}
+    <Footer/>
     </>
    
   )

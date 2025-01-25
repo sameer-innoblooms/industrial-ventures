@@ -141,14 +141,14 @@ export default function BestSeller() {
               Best Seller Product
             </Typography>
           </Box>
-          <FormControl sx={{ minWidth: 200 }}>
+          {/* <FormControl sx={{ minWidth: 200 }}>
             <Select value={sorting} onChange={handleSortChange} displayEmpty>
               <MenuItem value="default">Default sorting</MenuItem>
-              <MenuItem value="price-low">Price: Low to High</MenuItem>
+              <MenuItem value="price-low">Top seller</MenuItem>
               <MenuItem value="price-high">Price: High to Low</MenuItem>
               <MenuItem value="name">Sort by Name</MenuItem>
             </Select>
-          </FormControl>
+          </FormControl> */}
         </Box>
 
         <Grid container spacing={3}>

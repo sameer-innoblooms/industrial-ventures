@@ -13,6 +13,7 @@ import {
 import Image from "next/image";
 import Animation from "./AnimationUp";
 import theme from "../theme";
+import Promotions from "./Promotion";
 
 const blogPosts = [
   {
@@ -45,7 +46,7 @@ export default function Blog() {
   return (
     <ThemeProvider theme={theme}>
           <Animation>
-      <Box sx={{ py: 8, px: 2, maxWidth: 1200, mx: "auto" }}>
+      <Box sx={{ pt: 8, pb: 4, px: 2, maxWidth: 1200, mx: "auto" }}>
         <Typography
           variant="subtitle1"
           sx={{ textAlign: "center", color: "primary.main", mb: 1 }}

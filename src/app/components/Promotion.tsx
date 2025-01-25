@@ -24,7 +24,7 @@ const promotions = [
 export default function Promotions() {
   return (
     <ThemeProvider theme={theme}>
-          <Container sx={{ py: 8, marginBlock: 4 }}>
+          <Container sx={{ pb: 8, pt:2, marginBlock: 4 }}>
       <Animation>
         <Grid container spacing={4}>
           {promotions.map((promo, index) => (
