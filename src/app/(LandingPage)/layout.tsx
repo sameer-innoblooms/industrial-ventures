@@ -1,11 +1,9 @@
 'use client'
 
-import { Box, Drawer, List, ListItem, ListItemButton, ListItemIcon, ListItemText, Typography } from '@mui/material'
+
 import { Home, Description, People } from '@mui/icons-material'
-import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import ProductTop from './page'
-import DashboardLayoutBasic from '../components/SideNav'
 import "./globls.css"
 import Footer from '../Footer'
 
@@ -22,10 +20,12 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 
   return (
     <>
+
     <ProductTop/>
     {/* <DashboardLayoutBasic/> */}
     {children}
     <Footer/>
+
     </>
    
   )

@@ -12,6 +12,7 @@ import YouTubeIcon from "@mui/icons-material/YouTube"
 import { ThemeProvider } from "@emotion/react"
 import theme from "@/app/theme"
 import Map from "@/app/components/Map"
+import AnimationUp from "@/app/components/AnimationUp"
 
 export default function ContactForm() {
   const handleSubmit = (event: React.FormEvent) => {
@@ -20,7 +21,8 @@ export default function ContactForm() {
   }
 
   return (
-    <ThemeProvider theme={theme}>
+    <AnimationUp>
+        <ThemeProvider theme={theme}>
             <Container maxWidth="lg" sx={{ py: 8 }}>
       <Grid container spacing={6}>
         <Grid item xs={12} md={6}>
@@ -34,7 +36,7 @@ export default function ContactForm() {
             Contact us to get more info on the profucts and get the best deal in the market.
           </Typography>
 
-          <Stack spacing={3} sx={{ mt: 4 }}>
+          <Stack spacing={1} sx={{ mt: 4 }}>
             <Box sx={{ display: "flex", alignItems: "center", bgcolor: "#f8f9fa", p: 2, borderRadius: 1 }}>
               <LocationOnIcon color="primary" sx={{ mr: 2 }} />
               <Typography>Fourth Floor 5227, Nigam Market G.B Road, Ajmeri Gate, Delhi-110006</Typography>
@@ -122,6 +124,8 @@ export default function ContactForm() {
     </Container>
     <Map/>
     </ThemeProvider>
+    </AnimationUp>
+  
 
   )
 }

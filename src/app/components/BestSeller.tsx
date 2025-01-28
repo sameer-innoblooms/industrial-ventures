@@ -15,6 +15,7 @@ import {
   SelectChangeEvent,
   Chip,
   ThemeProvider,
+  useMediaQuery,
 } from "@mui/material";
 import { useAnimation, motion } from "framer-motion";
 import { useEffect, useState } from "react";
@@ -35,7 +36,7 @@ const products: Product[] = [
     id: 1,
     name: "Lightings",
     price: 30.0,
-    image: "/Light.png",
+    image: "/FloodLight.png",
     sale: true,
     salePercentage: 20,
   },
@@ -109,6 +110,7 @@ const Animation: React.FC<{ children: React.ReactNode }> = ({ children }) => {
 };
 
 export default function BestSeller() {
+  const isMobile = useMediaQuery(theme.breakpoints.down("md"));
   const [sorting, setSorting] = useState("default");
 
   const handleSortChange = (event: SelectChangeEvent) => {
@@ -117,104 +119,247 @@ export default function BestSeller() {
 
   return (
     <ThemeProvider theme={theme}>
-          <Container sx={{ py: 8 }}>
+     {isMobile? (
+            <Container
+            sx={{
+              pt: 6,
+              pb: 8,
+            }}
+          >
+
+              <Box
+                sx={{
+                  // display: "flex",
+                  // justifyContent: "space-between",
+                  alignItems: "center",
+                  mb: 5,
+                }}
+              >
+                <Box sx={{}}>
+                  <Typography
+                    variant="h5"
+                    gutterBottom
+                    sx={{
+                      textAlign: "center",
+                      color: "primary.main",
+                      fontWeight: "bold",
+                    }}
+                  >
+                    Our Product
+                  </Typography>
+                  <Typography
+                    variant="h4"
+                    component="h2"
+                    fontWeight="bold"
+                    color="text.primary"
+                    textAlign="center"
+                  >
+                    Best Seller Product
+                  </Typography>
+                </Box>
+                {/* <FormControl sx={{ minWidth: 200 }}>
+                <Select value={sorting} onChange={handleSortChange} displayEmpty>
+                  <MenuItem value="default">Default sorting</MenuItem>
+                  <MenuItem value="price-low">Top seller</MenuItem>
+                  <MenuItem value="price-high">Price: High to Low</MenuItem>
+                  <MenuItem value="name">Sort by Name</MenuItem>
+                </Select>
+              </FormControl> */}
+              </Box>
+    
+              <Grid container spacing={3}>
+                {products.map((product) => (
+                  <Grid item key={product.id} xs={12} sm={6} md={4} lg={3}>
+                    <Card
+                      sx={{
+                        boxShadow: 4,
+                        height: "100%",
+                        display: "flex",
+                        flexDirection: "column",
+                        position: "relative",
+                        border: "0.5px solid gray",
+                      }}
+                    >
+                      {product.sale && (
+                        <Chip
+                          label={`${product.salePercentage}% SALE`}
+                          color="primary"
+                          size="small"
+                          sx={{
+                            position: "absolute",
+                            top: 16,
+                            right: 16,
+                            bgcolor: "primary.main",
+                            zIndex: 1
+                          }}
+                        />
+                      )}
+                      <CardContent
+                        sx={{
+                          flexGrow: 1,
+                          display: "flex",
+                          flexDirection: "column",
+                          alignItems: "center",
+                        }}
+                      >
+                        <Box
+                          sx={{
+                            width: "100%",
+                            paddingTop: "100%",
+                            position: "relative",
+                            // mb: 2,
+                          }}
+                        >
+                          <Box
+                            component="img"
+                            src={product.image || "/placeholder.svg"}
+                            alt={product.name}
+                            sx={{
+                              position: "absolute",
+                              top: 0,
+                              left: 0,
+                              width: "100%",
+                              height: "100%",
+                              objectFit: "cover",
+                              borderRadius: 1,
+                            }}
+                          />
+                        </Box>
+                        <Typography
+                          variant="subtitle1"
+                          component="h3"
+                          align="center"
+                        >
+                          {product.name}
+                        </Typography>
+                      </CardContent>
+                    </Card>
+                  </Grid>
+                ))}
+              </Grid>
+
+          </Container>
+     ):(
+      <Container
+      sx={{
+        pt: 6,
+        pb: 8,
+      }}
+    >
       <Animation>
         <Box
           sx={{
-            display: "flex",
-            justifyContent: "space-between",
+            // display: "flex",
+            // justifyContent: "space-between",
             alignItems: "center",
-            mb: 4,
+            mb: 5,
           }}
         >
-          <Box>
+          <Box sx={{}}>
             <Typography
-              variant="subtitle1"
+              variant="h5"
               gutterBottom
               sx={{
+                textAlign: "center",
                 color: "primary.main",
+                fontWeight: "bold",
               }}
             >
               Our Product
             </Typography>
-            <Typography variant="h4" component="h2" fontWeight="bold" color="text.primary">
+            <Typography
+              variant="h4"
+              component="h2"
+              fontWeight="bold"
+              color="text.primary"
+              textAlign="center"
+            >
               Best Seller Product
             </Typography>
           </Box>
           {/* <FormControl sx={{ minWidth: 200 }}>
-            <Select value={sorting} onChange={handleSortChange} displayEmpty>
-              <MenuItem value="default">Default sorting</MenuItem>
-              <MenuItem value="price-low">Top seller</MenuItem>
-              <MenuItem value="price-high">Price: High to Low</MenuItem>
-              <MenuItem value="name">Sort by Name</MenuItem>
-            </Select>
-          </FormControl> */}
+          <Select value={sorting} onChange={handleSortChange} displayEmpty>
+            <MenuItem value="default">Default sorting</MenuItem>
+            <MenuItem value="price-low">Top seller</MenuItem>
+            <MenuItem value="price-high">Price: High to Low</MenuItem>
+            <MenuItem value="name">Sort by Name</MenuItem>
+          </Select>
+        </FormControl> */}
         </Box>
 
         <Grid container spacing={3}>
           {products.map((product) => (
-            <Grid item xs={12} sm={6} md={3} key={product.id}>
+            <Grid item key={product.id} xs={12} sm={6} md={4} lg={3}>
               <Card
                 sx={{
+                  boxShadow: 4,
                   height: "100%",
                   display: "flex",
                   flexDirection: "column",
+                  position: "relative",
+                  border: "0.5px solid gray",
                 }}
               >
-                <Box sx={{ position: "relative", height: '100%' }}>
-                  <CardMedia
-                    component="img"
-                    height="200px"
-                    image={product.image}
-                    alt={product.name}
-                  
+                {product.sale && (
+                  <Chip
+                    label={`${product.salePercentage}% SALE`}
+                    color="primary"
+                    size="small"
                     sx={{
-                     objectFit: "fit",
+                      position: "absolute",
+                      top: 16,
+                      right: 16,
+                      bgcolor: "primary.main",
+                      zIndex: 1
                     }}
                   />
-                  {product.sale && (
-                    <Chip
-                      label={`${product.salePercentage}% SALE`}
-                      color="primary"
-                      size="small"
+                )}
+                <CardContent
+                  sx={{
+                    flexGrow: 1,
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                  }}
+                >
+                  <Box
+                    sx={{
+                      width: "100%",
+                      paddingTop: "100%",
+                      position: "relative",
+                      // mb: 2,
+                    }}
+                  >
+                    <Box
+                      component="img"
+                      src={product.image || "/placeholder.svg"}
+                      alt={product.name}
                       sx={{
                         position: "absolute",
-                        top: 16,
-                        right: 16,
-                        bgcolor: "primary.main",
+                        top: 0,
+                        left: 0,
+                        width: "100%",
+                        height: "100%",
+                        objectFit: "cover",
+                        borderRadius: 1,
                       }}
                     />
-                  )}
-                </Box>
-                <CardContent sx={{ pt: 1, pb: 0 }}>
-                  <Typography gutterBottom  color="text.primary"  sx={{
-                    fontWeight: '10px',
-                    height: '10px'
-                  }}>
+                  </Box>
+                  <Typography
+                    variant="subtitle1"
+                    component="h3"
+                    align="center"
+                  >
                     {product.name}
                   </Typography>
-                  {/* <Typography variant="h6" color="primary" fontWeight="bold">
-                  ${product.price.toFixed(2)}
-                </Typography> */}
                 </CardContent>
-                {/* <Button
-                variant="contained"
-                fullWidth
-                sx={{
-                  borderRadius: 0,
-                  py: 1.5,
-                  bgcolor: "#1C4B84"
-                }}
-              >
-                ADD TO CART
-              </Button> */}
               </Card>
             </Grid>
           ))}
         </Grid>
       </Animation>
     </Container>
+     )}
     </ThemeProvider>
-
   );
 }

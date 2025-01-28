@@ -14,7 +14,7 @@ export default function Footer() {
       <Container maxWidth="lg">
         <Grid container spacing={4}>
           {/* Left Column */}
-          <Grid item xs={12} md={3}>
+          <Grid item xs={12} md={3} sx={{ }}>
             <Typography variant="h6" sx={{ mb: 2 }}>
               Useful Links
             </Typography>
@@ -41,16 +41,22 @@ export default function Footer() {
           {/* Center Column */}
           <Grid item xs={12} md={6} sx={{ textAlign: "center",  p: 2, borderRadius: 2 }}>
             <Box sx={{ mb:2, display:'flex', justifyContent: 'center', alignItems: 'center' }}>
+              <Link href="/">
               <Image
+
                 src="/Logo.png"
                 alt="Ezectric Logo"
                 width={100}
                 height={80}
                 style={{ filter: "brightness(0) invert(1)" }}
               />
-              <Typography variant="h4" color="white">
+              <Typography variant="h4" color="white" sx={{
+                
+              }}>
                 Industrial Ventures
               </Typography>
+              </Link>
+              
             </Box>
             <Typography sx={{ mb: 3, maxWidth: 400, mx: "auto" }}>
             Our company is dedicated to providing high-quality mechanical and electrical products that meet the diverse needs of our clients.
@@ -73,24 +79,25 @@ export default function Footer() {
 
           {/* Right Column */}
           <Grid item xs={12} md={3} sx={{
+
           }}>
             <Typography variant="h6" sx={{ mb: 2, textAlign: 'right' }}>
               Quick Links
             </Typography>
             <Stack spacing={1} textAlign='right'>
-              <Link href="#" style={{ color: "white", textDecoration: "none" }}>
+              <Link href="/about" style={{ color: "white", textDecoration: "none" }}>
                 About Us
               </Link>
-              <Link href="#" style={{ color: "white", textDecoration: "none" }}>
+              <Link href="/product" style={{ color: "white", textDecoration: "none" }}>
                 Product
               </Link>
-              <Link href="#" style={{ color: "white", textDecoration: "none" }}>
+              {/* <Link href="#" style={{ color: "white", textDecoration: "none" }}>
                 Blog
-              </Link>
+              </Link> */}
               {/* <Link href="#/faq" style={{ color: "white", textDecoration: "none" }}>
                 FAQ
               </Link> */}
-              <Link href="#" style={{ color: "white", textDecoration: "none" }}>
+              <Link href="/contact" style={{ color: "white", textDecoration: "none" }}>
                 Contact
               </Link>
             </Stack>
@@ -125,7 +132,7 @@ export default function Footer() {
         />
 
         {/* Copyright */}
-        <Box sx={{ mt: 2, display: "flex", justifyContent: "space-between", flexWrap: "wrap", gap: 2 }}>
+        <Box sx={{ mt: 2, display: "flex", justifyContent: {xs: "center", md: "space-between"}, flexWrap: "wrap", gap: 2 }}>
           <Typography variant="body2">Industrial Ventures Company</Typography>
           <Typography variant="body2">Copyright © 2024. All rights reserved.</Typography>
         </Box>

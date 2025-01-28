@@ -12,6 +12,7 @@ import {
   ListItemIcon,
   ListItemText,
   ThemeProvider,
+  useMediaQuery,
 } from "@mui/material"
 import CheckCircleIcon from "@mui/icons-material/CheckCircle"
 import VerifiedUserIcon from "@mui/icons-material/VerifiedUser"
@@ -20,6 +21,7 @@ import { useAnimation, motion } from "framer-motion"
 import { useInView } from "react-intersection-observer"
 import AnimationRight from "./AnimationRight"
 import theme from "../theme"
+import AnimationLeft from "./AnimationLeft"
 
 const features = [
   { label: "Money Back Guarantee", value: 90 },
@@ -93,6 +95,7 @@ const ProgressWithLabel = ({ label, value }: { label: string; value: number }) =
         variant="determinate"
         value={progress}
         sx={{
+          color: '#00000099',
           height: 8,
           borderRadius: 5,
           
@@ -107,31 +110,121 @@ const ProgressWithLabel = ({ label, value }: { label: string; value: number }) =
 }
 
 export default function ChooseUs() {
+
+  const isMobile = useMediaQuery(theme.breakpoints.down("xl"));
+
   return (
     <ThemeProvider theme={theme}>
-      <Box sx={{ bgcolor: "#f8f9fa", py: 8 }}>
+       {isMobile ? (
+              <Box sx={{ bgcolor: "#f8f9fa", py: 8 }}>
+              <Container maxWidth="xl">
+
+                  <Grid container spacing={4}>
+                    
+                    <Grid item xs={12} md={6}>
+                  
+                      <Box
+                        sx={{
+                          height: "100%",
+                          minHeight: 400,
+                          backgroundImage: `url(/Contact.png)`,
+                          backgroundSize: "cover",
+                          backgroundPosition: "center",
+                          borderRadius: 2,
+                        }}
+                      />
+                         
+                    </Grid>
+                
+      
+                    <Grid item xs={12} md={6} height="100%">
+                  
+                        <Typography
+                          variant="h5"
+                          
+                          gutterBottom
+                          sx={{
+                            color: "primary.main",
+                            fontWeight: "bold",
+                          }}
+                        >
+                          Why Choose Us
+                        </Typography>
+                        <Typography variant="h4" component="h2" fontWeight="bold" color="text.primary" gutterBottom>
+                          We Are Best Electrical and Mechanical Store in Town
+                        </Typography>
+                        <Typography color="text.secondary" paragraph>
+                          We provide the best quality products at the best price. We have a wide range of products from many
+                          brands. We are committed to providing the best service to our customers.
+                        </Typography>
+                 
+                      <Box sx={{ bgcolor: "primary.main", p: 3, borderRadius: 2, color: "white", mb: 4 }}>
+                        <VerifiedUserIcon sx={{ fontSize: 40, mb: 2 }} />
+                        <Typography variant="h6" gutterBottom>
+                          We Provide The Best Guarantee For You Loyal Customers
+                        </Typography>
+                      </Box>
+      
+                      <Box sx={{ mb: 4, color: '#00000099' }}>
+                        {features.map((feature) => (
+                          <ProgressWithLabel key={feature.label} label={feature.label} value={feature.value} />
+                        ))}
+                      </Box>
+      
+                      <List>
+                        {benefits.map((benefit) => (
+                          <ListItem key={benefit} disableGutters>
+                            <ListItemIcon>
+                              <CheckCircleIcon
+                                sx={{
+                                  color: "primary.main",
+                                }}
+                              />
+                            </ListItemIcon>
+                            <ListItemText primary={benefit} />
+                          </ListItem>
+                        ))}
+                      </List>
+      
+                      <Button variant="contained" size="large" sx={{ mt: 4, bgcolor: "primary.main" }}>
+                        VISIT US
+                      </Button>
+                    </Grid>
+                  </Grid>
+
+              </Container>
+            </Box>
+       ):(
+        <Box sx={{ bgcolor: "#f8f9fa", py: 8 }}>
         <Container maxWidth="xl">
           <Animation>
             <Grid container spacing={4}>
+              
               <Grid item xs={12} md={6}>
+            
                 <Box
                   sx={{
                     height: "100%",
                     minHeight: 400,
-                    backgroundImage: `url(/Store.jpg)`,
+                    backgroundImage: `url(/Contact.png)`,
                     backgroundSize: "cover",
                     backgroundPosition: "center",
                     borderRadius: 2,
                   }}
                 />
+                   
               </Grid>
+          
+
               <Grid item xs={12} md={6}>
                 <AnimationRight>
                   <Typography
-                    variant="subtitle1"
+                    variant="h5"
+                    
                     gutterBottom
                     sx={{
                       color: "primary.main",
+                      fontWeight: "bold",
                     }}
                   >
                     Why Choose Us
@@ -151,7 +244,7 @@ export default function ChooseUs() {
                   </Typography>
                 </Box>
 
-                <Box sx={{ mb: 4 }}>
+                <Box sx={{ mb: 4, color: '#00000099' }}>
                   {features.map((feature) => (
                     <ProgressWithLabel key={feature.label} label={feature.label} value={feature.value} />
                   ))}
@@ -180,6 +273,7 @@ export default function ChooseUs() {
           </Animation>
         </Container>
       </Box>
+       )}
     </ThemeProvider>
   )
 }

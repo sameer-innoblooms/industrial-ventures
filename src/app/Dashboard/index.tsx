@@ -16,7 +16,9 @@ import Clients from "../components/Clients";
 
 function Dashboard() {
   return (
-    <Box>
+    <Box sx={{
+      
+    }}>
       {/* <Home /> */}
       {/* <Navbar/> */}
       <Hero />
@@ -40,7 +42,7 @@ function Dashboard() {
 
       <Contact />
 
-      <Blog />
+      {/* <Blog /> */}
       {/* <NewsCarousel/> */}
       {/* <ProductCarousel/> */}
       {/* <Services /> */}

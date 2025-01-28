@@ -32,6 +32,7 @@ import { useInView } from "react-intersection-observer";
 import Image from "next/image";
 // import Link from "next/link";
 import theme from "../theme";
+import CloseIcon from '@mui/icons-material/Close';
 
 
 const Animation: React.FC<{ children: React.ReactNode }> = ({ children }) => {
@@ -103,7 +104,7 @@ const menuItems = [
   { text: "ABOUT US", href: "/about", hasSubmenu: false },
   { text: "PRODUCT", href: "/product", hasSubmenu: false },
   // { text: 'PAGE', hasSubmenu: true },
-  { text: "BLOG", href: "/blog" },
+  // { text: "BLOG", href: "/blog" },
   { text: "CONTACT", href: "/contact", hasSubmenu: false },
 ];
 
@@ -111,6 +112,14 @@ export default function Navbar() {
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
   const [mobileOpen, setMobileOpen] = useState(false);
   const [openSubmenu, setOpenSubmenu] = useState<string | null>(null);
+  const [open, setOpen] = useState(false);
+
+
+
+
+  const toggleDrawer = (newOpen: boolean) => () => {
+    setOpen(newOpen);
+  };
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
@@ -123,6 +132,21 @@ export default function Navbar() {
   const drawer = (
     <Box sx={{ width: 250 }} role="presentation">
       <List>
+      <Box
+        sx={{
+          height: { xs: "60px", sm: "80px" },
+          display: "flex",
+          justifyContent: "flex-end",
+          // alignItems: "center",
+          // p: 2,
+        }}
+      >
+        <IconButton onClick={handleDrawerToggle}>
+          <CloseIcon
+            sx={{ color: "black", fontSize: { xs: "24px", sm: "32px" } }}
+          />
+        </IconButton>
+      </Box>
         {menuItems.map((item) => (
           <Box key={item.text} sx={{
        
@@ -131,27 +155,32 @@ export default function Navbar() {
               href={item.href}
               sx={{
                 color: "black",
+                textDecoration: "none"
               }}
             >
+
               <ListItemButton
                 onClick={() => item.hasSubmenu && handleSubmenuClick(item.text)}
               >
                 <ListItemText
-                  // primary={item.text}
+                  primary={item.text}
                   sx={{
-                    // color: "black",
+                    color: "black",
+                    textAlign:'center'
                    
-                  }}
+                  }}   
                 />
                 {item.hasSubmenu &&
-                  (openSubmenu === item.text ? <ExpandLess /> : <ExpandMore />)}
+                  (openSubmenu === item.text ? <ExpandLess sx={{
+                    color: "black",
+                  }}/> : <ExpandMore />)}
               </ListItemButton>
             </Link>
             {item.hasSubmenu && (
               <Collapse
                 in={openSubmenu === item.text}
                 timeout="auto"
-                unmountOnExit
+                unmountOnExit               
               >
                 <List component="div" disablePadding>
                   <ListItemButton sx={{ pl: 4 }}>
@@ -172,7 +201,121 @@ export default function Navbar() {
   return (
     <>
     <ThemeProvider theme={theme}>
-    <Animation>
+      {isMobile? (
+          
+
+
+            <AppBar
+              position="static"
+              color="default"
+              elevation={0}
+              sx={{
+                // bgcolor: theme.palette.background.paper, // Quill Gray background
+              }}
+            >
+              <Container>
+                <Toolbar disableGutters sx={{ }}>
+                  <Link href='/'>
+                  <Image  src="/Logo.png" alt="Logo" height={100} width={95} />
+    
+                  </Link>
+    
+                  <Typography
+                  variant="h5"
+                  component="a"
+                  href="/"
+                  sx={{
+                    fontWeight: 700,
+                    color: 'text.primary',
+                    textDecoration: 'none',
+                    
+                  }}
+                >
+                  Industrial Ventures
+                </Typography>
+    
+                  {isMobile ? (
+                    <>
+                      <IconButton
+                        
+                        aria-label="open drawer"
+                        edge="start"
+                        onClick={handleDrawerToggle}
+                        sx={{
+                          color:'black',
+                          ml:2
+                        }}
+                      >
+                        <MenuIcon />
+                      </IconButton>
+                      <Drawer
+                        variant="temporary"
+                        anchor="right"
+                        open={mobileOpen}
+                        onClose={handleDrawerToggle}
+                        ModalProps={{
+                          keepMounted: true, // Better open performance on mobile.
+                        }}
+                      >
+                        {drawer}
+                      </Drawer>
+                    </>
+                  ) : (
+                    <Box
+                      sx={{
+                        flexGrow: 1,
+                        display: "flex",
+                        justifyContent: "center",
+                      }}
+                    >
+                      {menuItems.map((item) => (
+                        <Link href={item.href} key={item.text} color="#000">
+                          <Button
+                            sx={{
+                              bgcolor: '#f5f5f5',
+                              color: 'text.primary',
+                              mx: '1px',
+                              ":hover": {
+                                color: 'white',
+                                background: 'primary.main'
+                              }
+                            }}
+                            endIcon={
+                              item.hasSubmenu ? (
+                                <KeyboardArrowDownIcon />
+                              ) : undefined
+                            }
+                          >
+                            {item.text}
+                          </Button>
+                        </Link>
+                      ))}
+                    </Box>
+                  )}
+    
+                  <Search
+                    sx={{
+                      border: 1,
+                      borderColor: "grey.300",
+                      borderRadius: 1,
+                      display: { xs: "none", sm: "block" },
+                    }}
+                  >
+                    <SearchIconWrapper>
+                      <SearchIcon sx={{ color: "text.primary" }} />
+                    </SearchIconWrapper>
+                    <StyledInputBase
+                      placeholder="electrical"
+                      inputProps={{ "aria-label": "search" }}
+                      sx={{ color: "#1C4B84" }}
+                    />
+                  </Search>
+                </Toolbar>
+              </Container>
+            </AppBar>
+
+      ):(
+        <Animation>
 
 
         <AppBar
@@ -186,7 +329,7 @@ export default function Navbar() {
           <Container>
             <Toolbar disableGutters sx={{ justifyContent: "space-between" }}>
               <Link href='/'>
-              <Image  src="/Logo.png" alt="Logo" height={100} width={100} />
+              <Image  src="/Logo.png" alt="Logo" height={105} width={100} />
 
               </Link>
 
@@ -206,10 +349,13 @@ export default function Navbar() {
               {isMobile ? (
                 <>
                   <IconButton
-                    color="inherit"
+                    
                     aria-label="open drawer"
                     edge="start"
                     onClick={handleDrawerToggle}
+                    sx={{
+                      color:'black'
+                    }}
                   >
                     <MenuIcon />
                   </IconButton>
@@ -279,6 +425,7 @@ export default function Navbar() {
           </Container>
         </AppBar>
       </Animation>
+      )}
     </ThemeProvider>
       
     </>

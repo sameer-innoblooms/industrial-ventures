@@ -147,14 +147,14 @@ const responsive = {
 };
 
 export default function Hero() {
-  const isMobile = useMediaQuery(theme.breakpoints.down("md"));
+  const isMobile = useMediaQuery(theme.breakpoints.down("xl"));
 
   const images = [
     {
       url: "/FloodLight.png",
       title: "Flood Light",
       description:
-        "A large, bright artificial light that emits a wide beam of light. Floodlights illuminate outdoor areas, such as sports fields, parking lots, and buildings.",
+        "A large, bright artificial light that emits a wide beam of light.",
     },
     {
       url: "/Motor.png",
@@ -163,7 +163,7 @@ export default function Hero() {
         "A high-quality motor that provides efficient and reliable performance.",
     },
     {
-      url: "/Cables.png",
+      url: "/Cable1.png",
       title: "Cables",
       description:
         "A range of high-quality cables that provide reliable and efficient connectivity.",
@@ -187,177 +187,363 @@ export default function Hero() {
         sx={{
           position: "relative",
           bgcolor: "#f8f9fa",
-          pt: 5,
+          pt: {xs: 5, md:10},
           // pb: 20,
         }}
       >
-       
-          <Container>
-            <Grid container spacing={4} alignItems="center">
-              <Grid item xs={12} md={6}>
-                <AnimationLeft>
-                  <Typography
-                    component="h1"
-                    variant="h2"
-                    color="text.primary"
-                    gutterBottom
-                    fontWeight="bold"
-                  >
-                    Building Lives
-                    <br />
-                    And Excellence
-                  </Typography>
-                  <Typography variant="h6" color="text.secondary" paragraph>
-                    Our company is dedicated to providing high-quality
-                    mechanical and electrical products that meet the diverse
-                    needs of our clients.
-                  </Typography>
-                  <Stack direction="row" spacing={2}>
-                    <Button
-                      variant="contained"
-                      size="large"
-                      sx={{
-                        bgcolor: "background.default",
-                      }}
-                    >
-                      VISIT US
-                    </Button>
-                    <Button
-                      sx={{
-                        ":hover .arrow": {
-                          transform: "translateX(5px)",
-                          transition: "all 0.3s ease-in-out",
-                        },
-                      }}
-                      variant="contained"
-                      size="large"
-                      endIcon={<ArrowForwardIcon className="arrow" sx={{}} />}
-                    >
-                      VIEW PRODUCT
-                    </Button>
-                  </Stack>
-                </AnimationLeft>
-              </Grid>
-
-              <Grid item xs={12} md={6}>
-                <AnimationRight>
-                  {/*@ts-ignore*/}
-                  <Carousel
-                    //@ts-ignore
-                    responsive={responsive}
-                    showDots={false}
-                    infinite={true}
-                    autoPlay={true}
-                    autoPlaySpeed={2000}
-                    keyBoardControl={true}
-                    customTransition="transform 500ms ease-in-out"
-                    transitionDuration={500}
-                    containerClass="carousel-container"
-                    removeArrowOnDeviceType={["tablet", "mobile", "desktop"]}
-                    dotListClass="custom-dot-list-style"
-                    itemClass="carousel-item-padding-40-px"
-                  >
-                    {images.map((obj, index) => (
-                      <Card
-                        key={index}
-                        sx={{
-                          maxWidth: 400,
-                          mx: "auto",
-                          backgroundColor: "transparent",
-                        }}
-                      >
-                        <Image
-                          src={obj.url}
-                          alt="Product Image"
-                          width={400}
-                          height={300}
-                          objectFit="fit"
-                        />
-                        <CardContent>
-                          <Typography
-                            gutterBottom
-                            variant="h5"
-                            component="h2"
-                            color="text.primary"
+       {isMobile? (
+                  <Container>
+                  <Grid container spacing={4} alignItems="center">
+                    <Grid item xs={12} md={6}>
+                      
+                     
+                        <Typography
+                          component="h1"
+                          variant="h3"
+                          color="text.primary"
+                          gutterBottom
+                          fontWeight="bold"
+                        >
+                          Building Lives
+                          <br />
+                          And Excellence
+                        </Typography>
+                        <Typography variant="h6" color="text.secondary" paragraph>
+                          Our company is dedicated to providing high-quality
+                          mechanical and electrical products that meet the diverse
+                          needs of our clients.
+                        </Typography>
+                        <Stack direction="row" spacing={2}>
+                          <Button
+                          href="/contact"
+                            variant="contained"
+                            size="large"
+                            sx={{
+                              bgcolor: "background.default",
+                            }}
                           >
-                            {obj.title}
-                          </Typography>
-                          <Typography variant="body2" color="text.secondary">
-                            {obj.description}
-                          </Typography>
-                          <Typography variant="caption" color="text.secondary">
-                            Best Price
-                          </Typography>
-                          {/* <Typography variant="h4" color="primary" fontWeight="bold">
-                      $30.00
-                    </Typography> */}
-                        </CardContent>
-                      </Card>
+                            VISIT US
+                          </Button>
+                          <Button
+                          href="/product"
+                            sx={{
+                              ":hover .arrow": {
+                                transform: "translateX(5px)",
+                                transition: "all 0.3s ease-in-out",
+                              },
+                            }}
+                            variant="contained"
+                            size="large"
+                            endIcon={<ArrowForwardIcon className="arrow" sx={{}} />}
+                          >
+                            VIEW PRODUCT
+                          </Button>
+                        </Stack>
+                      
+                    </Grid>
+      
+                    <Grid item xs={12} md={6}>
+                      
+                        {/*@ts-ignore*/}
+                        <Carousel
+                          //@ts-ignore
+                          responsive={responsive}
+                          showDots={false}
+                          infinite={true}
+                          autoPlay={true}
+                          autoPlaySpeed={2000}
+                          keyBoardControl={true}
+                          customTransition="transform 500ms ease-in-out"
+                          transitionDuration={500}
+                          containerClass="carousel-container"
+                          removeArrowOnDeviceType={["tablet", "mobile", "desktop"]}
+                          dotListClass="custom-dot-list-style"
+                          itemClass="carousel-item-padding-40-px"
+                        >
+                          {images.map((obj, index) => (
+                            <Card
+                              key={index}
+                              sx={{
+                                maxWidth: 400,
+                                mx: "auto",
+                                backgroundColor: "transparent",
+                                boxShadow: 0
+                              }}
+                            >
+                              <Image
+                                src={obj.url}
+                                alt="Product Image"
+                                width={400}
+                                height={300}
+                                objectFit="fit"
+                              />
+                              <CardContent>
+                                <Typography
+                                  gutterBottom
+                                  variant="h5"
+                                  component="h2"
+                                  color="text.primary"
+                                  sx={{
+                                    // fontWeight: "bold",
+                                  }}
+                                >
+                                  {obj.title}
+                                </Typography>
+                                <Typography variant="body2" color="text.secondary">
+                                  {obj.description}
+                                </Typography>
+                                
+                                {/* <Typography variant="h4" color="primary" fontWeight="bold">
+                            $30.00
+                          </Typography> */}
+                              </CardContent>
+                            </Card>
+                          ))}
+                        </Carousel>
+                      
+                    </Grid>
+                  </Grid>
+               
+                  <Grid container spacing={4} sx={{ mt: 4, mb: 4 }}>
+                    {[
+                      {
+                        icon: (
+                          <MoneyIcon
+                            sx={{ fontSize: 40, color: "background.primary" }}
+                          />
+                        ),
+                        title: "Big Cashback",
+                        description: "Over 40% Cashback",
+                      },
+                      {
+                        icon: (
+                          <LocalShippingIcon
+                            sx={{ fontSize: 40, color: "background.primary" }}
+                          />
+                        ),
+                        title: "Fast Shipping",
+                        description: "Order Over  ₹5000",
+                      },
+                      {
+                        icon: (
+                          <PaymentsIcon
+                            sx={{ fontSize: 40, color: "background.primary" }}
+                          />
+                        ),
+                        title: "Quick Payment",
+                        description: "100% Secure",
+                      },
+                    ].map((feature, index) => (
+                      <Grid item xs={12} md={4} key={index}>
+                        <Card
+                          sx={{
+                            height: "100%",
+                            display: "flex",
+                            alignItems: "center",
+                            p: 3,
+                           
+                          }}
+                        >
+                          <Stack direction="row" spacing={2} alignItems="center" sx={{
+                            
+                          }}>
+                            <Box sx={{ color: "primary.main" }}>{feature.icon}</Box>
+                            <Box>
+                              <Typography
+                                variant="h6"
+                                component="h3"
+                                color="text.primary"
+                              >
+                                {feature.title}
+                              </Typography>
+                              <Typography variant="body2" color="text.secondary">
+                                {feature.description}
+                              </Typography>
+                            </Box>
+                          </Stack>
+                        </Card>
+                      </Grid>
                     ))}
-                  </Carousel>
-                </AnimationRight>
-              </Grid>
-            </Grid>
+                  </Grid>
+               
+                  
+                </Container>
+       ): (
+        <Container>
+        <Grid container spacing={4} alignItems="center">
+          <Grid item xs={12} md={6}>
+            
+            <AnimationLeft>
+              <Typography
+                component="h1"
+                variant="h2"
+                color="text.primary"
+                gutterBottom
+                fontWeight="bold"
+              >
+                Building Lives
+                <br />
+                And Excellence
+              </Typography>
+              <Typography variant="h6" color="text.secondary" paragraph>
+                Our company is dedicated to providing high-quality
+                mechanical and electrical products that meet the diverse
+                needs of our clients.
+              </Typography>
+              <Stack direction="row" spacing={2}>
+                <Button
+                href="/contact"
+                  variant="contained"
+                  size="large"
+                  sx={{
+                    bgcolor: "background.default",
+                  }}
+                >
+                  VISIT US
+                </Button>
+                <Button
+                href="/product"
+                  sx={{
+                    ":hover .arrow": {
+                      transform: "translateX(5px)",
+                      transition: "all 0.3s ease-in-out",
+                    },
+                  }}
+                  variant="contained"
+                  size="large"
+                  endIcon={<ArrowForwardIcon className="arrow" sx={{}} />}
+                >
+                  VIEW PRODUCT
+                </Button>
+              </Stack>
+            </AnimationLeft>
+          </Grid>
 
-            <Grid container spacing={4} sx={{ mt: 4, mb: 4 }}>
-              {[
-                {
-                  icon: (
-                    <MoneyIcon
-                      sx={{ fontSize: 40, color: "background.primary" }}
-                    />
-                  ),
-                  title: "Big Cashback",
-                  description: "Over 40% Cashback",
-                },
-                {
-                  icon: (
-                    <LocalShippingIcon
-                      sx={{ fontSize: 40, color: "background.primary" }}
-                    />
-                  ),
-                  title: "Fast Shipping",
-                  description: "Order Over  ₹5000",
-                },
-                {
-                  icon: (
-                    <PaymentsIcon
-                      sx={{ fontSize: 40, color: "background.primary" }}
-                    />
-                  ),
-                  title: "Quick Payment",
-                  description: "100% Secure",
-                },
-              ].map((feature, index) => (
-                <Grid item xs={12} md={4} key={index}>
+          <Grid item xs={12} md={6}>
+            <AnimationRight>
+              {/*@ts-ignore*/}
+              <Carousel
+                //@ts-ignore
+                responsive={responsive}
+                showDots={false}
+                infinite={true}
+                autoPlay={true}
+                autoPlaySpeed={2000}
+                keyBoardControl={true}
+                customTransition="transform 500ms ease-in-out"
+                transitionDuration={500}
+                containerClass="carousel-container"
+                removeArrowOnDeviceType={["tablet", "mobile", "desktop"]}
+                dotListClass="custom-dot-list-style"
+                itemClass="carousel-item-padding-40-px"
+              >
+                {images.map((obj, index) => (
                   <Card
+                    key={index}
                     sx={{
-                      height: "100%",
-                      display: "flex",
-                      alignItems: "center",
-                      p: 3,
+                      maxWidth: 400,
+                      mx: "auto",
+                      backgroundColor: "transparent",
+                      boxShadow: 0
                     }}
                   >
-                    <Stack direction="row" spacing={2} alignItems="center">
-                      <Box sx={{ color: "primary.main" }}>{feature.icon}</Box>
-                      <Box>
-                        <Typography
-                          variant="h6"
-                          component="h3"
-                          color="text.primary"
-                        >
-                          {feature.title}
-                        </Typography>
-                        <Typography variant="body2" color="text.secondary">
-                          {feature.description}
-                        </Typography>
-                      </Box>
-                    </Stack>
+                    <Image
+                      src={obj.url}
+                      alt="Product Image"
+                      width={400}
+                      height={300}
+                      objectFit="fit"
+                    />
+                    <CardContent>
+                      <Typography
+                        gutterBottom
+                        variant="h5"
+                        component="h2"
+                        color="text.primary"
+                        sx={{
+                          // fontWeight: "bold",
+                        }}
+                      >
+                        {obj.title}
+                      </Typography>
+                      <Typography variant="body2" color="text.secondary">
+                        {obj.description}
+                      </Typography>
+                      
+                      {/* <Typography variant="h4" color="primary" fontWeight="bold">
+                  $30.00
+                </Typography> */}
+                    </CardContent>
                   </Card>
-                </Grid>
-              ))}
+                ))}
+              </Carousel>
+            </AnimationRight>
+          </Grid>
+        </Grid>
+        <AnimationUp>
+        <Grid container spacing={4} sx={{ mt: 4, mb: 4 }}>
+          {[
+            {
+              icon: (
+                <MoneyIcon
+                  sx={{ fontSize: 40, color: "background.primary" }}
+                />
+              ),
+              title: "Big Cashback",
+              description: "Over 40% Cashback",
+            },
+            {
+              icon: (
+                <LocalShippingIcon
+                  sx={{ fontSize: 40, color: "background.primary" }}
+                />
+              ),
+              title: "Fast Shipping",
+              description: "Order Over  ₹5000",
+            },
+            {
+              icon: (
+                <PaymentsIcon
+                  sx={{ fontSize: 40, color: "background.primary" }}
+                />
+              ),
+              title: "Quick Payment",
+              description: "100% Secure",
+            },
+          ].map((feature, index) => (
+            <Grid item xs={12} md={4} key={index}>
+              <Card
+                sx={{
+                  height: "100%",
+                  display: "flex",
+                  alignItems: "center",
+                  p: 3,
+                }}
+              >
+                <Stack direction="row" spacing={2} alignItems="center">
+                  <Box sx={{ color: "primary.main" }}>{feature.icon}</Box>
+                  <Box>
+                    <Typography
+                      variant="h6"
+                      component="h3"
+                      color="text.primary"
+                    >
+                      {feature.title}
+                    </Typography>
+                    <Typography variant="body2" color="text.secondary">
+                      {feature.description}
+                    </Typography>
+                  </Box>
+                </Stack>
+              </Card>
             </Grid>
-          </Container>
+          ))}
+        </Grid>
+        </AnimationUp>
+        
+      </Container>
+       )}
+
         
       </Box>
     </ThemeProvider>

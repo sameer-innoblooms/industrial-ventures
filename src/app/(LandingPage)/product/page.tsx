@@ -1,100 +1,3 @@
-// 'use client'
-
-// import { useState } from 'react';
-// import {
-//   Box,
-//   Container,
-//   Typography,
-//   Tabs,
-//   Tab,
-//   Grid,
-//   Select,
-//   MenuItem,
-//   FormControl,
-//   SelectChangeEvent,
-// } from '@mui/material';
-// import { categories, projects } from '@/app/components/Project';
-// import ProjectCard from '@/app/components/ProjectCard';
-
-// export default function ProjectsPage() {
-//   const [projectType, setProjectType] = useState<'ongoing' | 'completed'>('ongoing');
-//   const [category, setCategory] = useState('All');
-
-//   const handleTabChange = (_: React.SyntheticEvent, newValue: 'ongoing' | 'completed') => {
-//     setProjectType(newValue);
-//   };
-
-//   const handleCategoryChange = (event: SelectChangeEvent) => {
-//     setCategory(event.target.value);
-//   };
-
-//   const filteredProjects = projects.filter(project => {
-//     if (project.type !== projectType) return false;
-//     if (category === 'All') return true;
-//     return project.category === category;
-//   });
-
-//   return (
-//     <Container maxWidth="lg" sx={{ py: 8 }}>
-//       <Typography
-//               component="h1"
-//               variant="h2"
-//               color="text.primary"
-//               gutterBottom
-//               fontWeight="bold"
-//             >
-//              Products
-//             </Typography>
-
-//       <Typography variant="body1" sx={{ mb: 6 }}>
-//         We provide a vast variety of mechanical and electrical goods
-//       </Typography>
-
-//       <Box sx={{ display: 'flex', justifyContent: 'space-between', mb: 4 }}>
-//         <Tabs
-//           value={projectType}
-//           onChange={handleTabChange}
-//           sx={{
-//             '& .MuiTab-root': { fontSize: '1.1rem' },
-//             '& .Mui-selected': { color: '#1C4B84' },
-//             '& .MuiTabs-indicator': { backgroundColor: '#1C4B84', height: 3 }
-//           }}
-//         >
-//           <Tab
-//             label="Electrical Products"
-//             value="ongoing"
-//           />
-//           <Tab
-//             label="Mechanical Products"
-//             value="completed"
-//           />
-//         </Tabs>
-
-//         <FormControl sx={{ minWidth: 200 }}>
-//           <Select
-//             value={category}
-//             onChange={handleCategoryChange}
-//             displayEmpty
-//           >
-//             {categories.map((cat) => (
-//               <MenuItem key={cat} value={cat}>
-//                 {cat}
-//               </MenuItem>
-//             ))}
-//           </Select>
-//         </FormControl>
-//       </Box>
-
-//       <Grid container spacing={3}>
-//         {filteredProjects.map((project) => (
-//           <Grid item key={project.id} xs={12} sm={6} md={4}>
-//             <ProjectCard project={project} />
-//           </Grid>
-//         ))}
-//       </Grid>
-//     </Container>
-//   );
-// }
 
 "use client";
 
@@ -117,6 +20,7 @@ import { products } from "./Data";
 import { Pagination } from "@mui/material";
 import Footer from "@/app/Footer";
 import Promotions from "@/app/components/Promotion";
+import AnimationUp from "@/app/components/AnimationUp";
 
 const theme = createTheme({
   palette: {
@@ -181,19 +85,29 @@ export default function ProductCatalog() {
 
   return (
     <ThemeProvider theme={theme}>
+      <AnimationUp>
       <Container maxWidth="md"  sx={{ pt: 4 }}>
         <Box
           sx={{
             display: "flex",
+            flexDirection: {xs: "column", md: 'row'},
             justifyContent: "space-between",
             alignItems: "center",
             mb: 4,
             borderBottom: 1,
             borderColor: "divider",
+            // border: '1px solid red'
           }}
         >
-          <Box>
+          <Box sx={{
+            overflowX: 'hidden',
+            // border: '1px solid green',
+            width: {md: 500, xs: "105%"},
+            alignContent: 'center',
+            
+          }}>
             <Button
+
               onClick={() => handleCategoryChange("electrical")}
               sx={{
                 color:
@@ -208,10 +122,13 @@ export default function ProductCatalog() {
                         ? "primary.main"
                         : "#cfcfcf",
                 // pb: 1,
-                fontSize: "25px",
+                fontSize: {xs: "15px", md: "20px"},
                 fontWeight: "bold",
                 textTransform: "capitalize",
                 mb: 2,
+                ml:{xs:1.3, md: 0},
+                width: {xs: "46%", md: "48%"},
+                // border: '1px solid red'
               }}
             >
               Electrical Products
@@ -232,20 +149,29 @@ export default function ProductCatalog() {
                     : "#cfcfcf",
 
                 // pb: 1,
-                ml: 2,
-                fontSize: "25px",
+                ml: {xs:2},
+                fontSize: {xs: "15px", md: "20px"},
                 fontWeight: "bold",
                 textTransform: "capitalize",
                 mb: 2,
+                width: {xs: "45%",md: "48%" },
+                // border: '1px solid green'
               }}
             >
               Mechanical Products
             </Button>
           </Box>
+          <Box sx={{
+          
+            // border: '1px solid blue',
+            width: {xs: "100%", sm: 180, md:180},
+            // border: '1px solid red',
+            
+          }}>
           <Select
             value={selectedType}
             onChange={handleTypeChange}
-            sx={{ minWidth: 180, mb: 1 }}
+            sx={{ minWidth: {xs: "100%", sm: 180, md:180}, mb: 1,  }}
           >
             {availableTypes.map((type) => (
               <MenuItem key={type} value={type}>
@@ -253,16 +179,20 @@ export default function ProductCatalog() {
               </MenuItem>
             ))}
           </Select>
+          </Box>
+          
         </Box>
         <Grid container spacing={3}>
           {currentItems.map((product) => (
             <Grid item key={product.id} xs={12} sm={6} md={4} lg={3}>
               <Card
                 sx={{
+                  boxShadow: 4,
                   height: "100%",
                   display: "flex",
                   flexDirection: "column",
                   position: "relative",
+                  border: '0.5px solid gray' 
                 }}
               >
                 {/* {product.sale && (
@@ -320,7 +250,6 @@ export default function ProductCatalog() {
         <Box
           sx={{
             display: "flex",
-
             justifyContent: "center",
             mt: 4,
           }}
@@ -333,6 +262,8 @@ export default function ProductCatalog() {
           />
         </Box>
       </Container>
+      </AnimationUp>
+
       <Promotions/>
     </ThemeProvider>
   );
