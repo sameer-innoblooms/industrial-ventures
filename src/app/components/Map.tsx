@@ -9,7 +9,7 @@ export default function Map() {
           flex: 1,
           height: { xs: "300px", md: "400px" },
           // borderRadius: "10px",
-          mb: 15,
+          mb: 8
         }}
       >
         <iframe

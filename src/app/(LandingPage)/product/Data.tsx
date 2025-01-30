@@ -3,6 +3,7 @@ export interface Product {
     name: string;
     category: "electrical" | "mechanical";
     type:
+    ""
       | "all"
       | "lighting"
       | "power"
@@ -13,6 +14,7 @@ export interface Product {
       | "belts"
       | "mounting"
       | "health"
+      | "valve"
       | "cable";
     image: string;
     sale?: number;
@@ -58,14 +60,14 @@ export interface Product {
       image: "/WaterMeter.png",
       sale: 20,
     },
-    {
-      id: 6,
-      name: "V Belts",
-      category: "mechanical",
-      type: "belts",
-      image: "/Vbelt.png",
-      sale: 20,
-    },
+    // {
+    //   id: 6,
+    //   name: "V Belts",
+    //   category: "mechanical",
+    //   type: "belts",
+    //   image: "/Vbelt.png",
+    //   sale: 20,
+    // },
     {
       id: 7,
       name: "Capacitors",
@@ -92,7 +94,7 @@ export interface Product {
       id: 10,
       name: "Electrical Switch Gears and Control Gears",
       category: "electrical",
-      type: "health",
+      type: "power",
       image: "/SwitchGears.png",
     },
   
@@ -100,28 +102,28 @@ export interface Product {
       id: 11,
       name: "Electrical Transformers",
       category: "electrical",
-      type: "health",
+      type: "power",
       image: "/Transformer.png",
     },
     {
       id: 12,
       name: "Electrical Wires and Cables",
       category: "electrical",
-      type: "health",
+      type: "cable",
       image: "/ElectricalWire.png",
     },
     {
       id: 13,
       name: "Instrumentation Cable",
       category: "electrical",
-      type: "health",
+      type: "cable",
       image: "/IntrumentationCable.png",
     },
     {
       id: 14,
       name: "Rubber Cable",
       category: "electrical",
-      type: "health",
+      type: "cable",
       image: "/Cables.png",
     },
     {
@@ -135,7 +137,7 @@ export interface Product {
       id: 16,
       name: "Welding Rods & Equipments",
       category: "mechanical",
-      type: "health",
+      type: "mounting",
       image: "/WeldingRods.png",
     },
   
@@ -143,7 +145,7 @@ export interface Product {
       id: 17,
       name: "MS, SS, GI Hide Pipes",
       category: "mechanical",
-      type: "health",
+      type: "pipes",
       image: "/MsPipes.png",
     },
   
@@ -151,49 +153,49 @@ export interface Product {
       id: 18,
       name: "Pulp Valve",
       category: "mechanical",
-      type: "health",
+      type: "valve",
       image: "/BoilerMountings.png",
     },
     {
       id: 19,
       name: "Sluice Valve",
       category: "mechanical",
-      type: "health",
+      type: "valve",
       image: "/SluiceValve.png",
     },
     {
       id: 20,
       name: "IBR & Non IBR Valve and Boiler Mounting",
       category: "mechanical",
-      type: "health",
+      type: "valve",
       image: "/IbrValve.png",
     },
     {
       id: 21,
       name: "Pump & Mono Blocks",
       category: "mechanical",
-      type: "health",
+      type: "control",
       image: "/MonoBlocks.png",
     },
     {
       id: 22,
       name: "Rotary Gear",
       category: "mechanical",
-      type: "health",
+      type: "control",
       image: "/RotatoryGear.png",
     },
-    {
-      id: 23,
-      name: "CI Water Meter",
-      category: "mechanical",
-      type: "health",
-      image: "/WaterMeter.png",
-    },
+    // {
+    //   id: 23,
+    //   name: "CI Water Meter",
+    //   category: "mechanical",
+    //   type: "measurement",
+    //   image: "/WaterMeter.png",
+    // },
     {
       id: 24,
       name: "Pneumatic & Hydraulic Goods",
       category: "mechanical",
-      type: "health",
+      type: "control",
       image: "/HydrolicGoods.png",
     },
     {
@@ -207,7 +209,7 @@ export interface Product {
       id: 26,
       name: "Dryer Steam Range",
       category: "mechanical",
-      type: "health",
+      type: "control",
       image: "/Dryer.jpg"
     },
     {
@@ -277,8 +279,8 @@ export interface Product {
       id: 36,
       name: "Spare for Centicleaner",
       category: "mechanical",
-      type: "health",
-      image: ""
+      type: "",
+      image: "/Centicleaner.png"
     },
     {
       id: 37,
@@ -305,7 +307,7 @@ export interface Product {
       id: 40,
       name: "Spare for Showers",
       category: "mechanical",
-      type: "health",
+      type: "pipes",
       image: "/Shower.png"
     },
     {

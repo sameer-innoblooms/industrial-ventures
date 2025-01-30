@@ -67,255 +67,268 @@ export default function Clients() {
 
   return (
     <ThemeProvider theme={theme}>
-      {isMobile ?(
-               
-               <Box
-                 sx={{
-                   position: "relative",
-                   height: { xs: "400px", md: "400px" },
-                   overflow: "hidden",
-                   bgcolor: "#f5f5f5",
-                   // border: "2px solid red",
-                   // paddingBlock: 7,
-                   // pl: 50,
-                   pt: {xs:2, md:5},
-                   pb: {xs:0, md:10},
-                   px: 4,
-                   // margin: '50px auto',
-                   Width: "80%",
-                 }}
-               >
-                 <Container maxWidth="lg">
-                   {/* Background Image */}
-                   <Box
-                     component="img"
-                     src="/Clientbg.jpg"
-                     alt="Background"
-                     sx={{
-                       position: "absolute",
-                       //    left: 0,
-       
-                       // ml: 10,
-                       //    top: 70,
-                       width: "700px",
-                       height: "85%",
-                       objectFit: "cover",
-                       display: { xs: "none", md: "block" },
-                       borderRadius: 2,
-                       mb: 10,
-                     }}
-                   />
-       
-                   {/* Testimonials Carousel */}
-                   <Box
-                     sx={{
-                       position: "relative",
-                       width: { xs: "100%", md: "700px" },
-                       ml: { xs: 0, md: "420px" },
-                       top: 22,
-                      //  p: 4,
-                       zIndex: 1,
-                       //    border: "2px solid red",
-                     }}
-                   >
-                     <Carousel
-                       responsive={responsive}
-                       showDots={false}
-                       infinite={true}
-                       autoPlay={true}
-                       autoPlaySpeed={2000}
-                       keyBoardControl={true}
-                       customTransition="transform 500ms ease-in-out"
-                       transitionDuration={500}
-                       containerClass="carousel-container"
-                       removeArrowOnDeviceType={["tablet", "mobile", "desktop"]}
-                       dotListClass="custom-dot-list-style"
-                       itemClass="carousel-item-padding-40-px"
-                     >
-                       {testimonials.map((testimonial) => (
-                         <Card
-                           key={testimonial.id}
-                           sx={{
-                             maxWidth: 345,
-                             m: 2,
-                             height: "300px",
-                             // mr: { xs: 1, sm: 2, md: 5 },
-                             // height: '300px',
-                             boxShadow: 3,
-                             borderRadius: 2,
-                             "&:hover": {
-                               boxShadow: 6,
-                               transform: "translateY(-4px)",
-                               transition: "all 0.3s ease-in-out",
-                             },
-                           }}
-                         >
-                           <CardContent>
-                             <Rating
-                               value={testimonial.rating}
-                               readOnly
-                               sx={{
-                                 mb: 2,
-                                 // color: 'primary.main'
-                               }}
-                             />
-                             <Box
-                               sx={{ display: "flex", alignItems: "center", mb: 2 }}
-                             >
-                               <Avatar
-                                 src={testimonial.avatar}
-                                 alt={testimonial.name}
-                                 sx={{ mr: 2 }}
-                               />
-                               <Box>
-                                 <Typography
-                                   variant="h6"
-                                   component="div"
-                                   color="text.primary"
-                                 >
-                                   {testimonial.name}
-                                 </Typography>
-                                 <Typography variant="body2" color="text.secondary">
-                                   {testimonial.role}
-                                 </Typography>
-                               </Box>
-                             </Box>
-                             <Typography variant="body2" color="text.secondary">
-                               {testimonial.text}
-                             </Typography>
-                           </CardContent>
-                         </Card>
-                       ))}
-                     </Carousel>
-                   </Box>
-                 </Container>
-               </Box>
+      {isMobile ? (
+        <Box
+          sx={{
+            position: "relative",
+            height: { xs: "400px", md: "400px" },
+            overflow: "hidden",
+            bgcolor: "#f5f5f5",
+            //  border: "2px solid red",
+            // paddingBlock: 7,
+            // pl: 50,
+            pt: { xs: 2, sm: 4, md: 5 },
+            pb: { xs: 0, md: 10 },
+            px: { xs: 0, sm: 2, md: 5 },
+            // margin: '50px auto',
+            Width: "80%",
+          }}
+        >
+          <Container maxWidth="lg">
+            {/* Background Image */}
+            <Box
+              component="img"
+              src="/Clientbg.jpg"
+              alt="Background"
+              sx={{
+                position: "absolute",
+                //    left: 0,
 
-      ):(
-         <AnimationUp>
-         <Box
-           sx={{
-             position: "relative",
-             height: { xs: "600px", md: "400px" },
-             overflow: "hidden",
-             bgcolor: "#f5f5f5",
-             // border: "2px solid red",
-             // paddingBlock: 7,
-             // pl: 50,
-             pt: 5,
-             pb: 10,
-             // margin: '50px auto',
-             Width: "80%",
-           }}
-         >
-           <Container maxWidth="lg">
-             {/* Background Image */}
-             <Box
-               component="img"
-               src="/Clientbg.jpg"
-               alt="Background"
-               sx={{
-                 position: "absolute",
-                 //    left: 0,
- 
-                 // ml: 10,
-                 //    top: 70,
-                 width: "700px",
-                 height: "85%",
-                 objectFit: "cover",
-                 display: { xs: "none", md: "block" },
-                 borderRadius: 2,
-                 mb: 10,
-               }}
-             />
- 
-             {/* Testimonials Carousel */}
-             <Box
-               sx={{
-                 position: "relative",
-                 width: { xs: "100%", md: "700px" },
-                 ml: { xs: 0, md: "420px" },
-                 top: 22,
-                 p: 4,
-                 zIndex: 1,
-                 //    border: "2px solid red",
-               }}
-             >
-               <Carousel
-                 responsive={responsive}
-                 showDots={false}
-                 infinite={true}
-                 autoPlay={true}
-                 autoPlaySpeed={2000}
-                 keyBoardControl={true}
-                 customTransition="transform 500ms ease-in-out"
-                 transitionDuration={500}
-                 containerClass="carousel-container"
-                 removeArrowOnDeviceType={["tablet", "mobile", "desktop"]}
-                 dotListClass="custom-dot-list-style"
-                 itemClass="carousel-item-padding-40-px"
-               >
-                 {testimonials.map((testimonial) => (
-                   <Card
-                     key={testimonial.id}
-                     sx={{
-                       maxWidth: 345,
-                       m: 2,
-                       height: "300px",
-                       // mr: { xs: 1, sm: 2, md: 5 },
-                       // height: '300px',
-                       boxShadow: 3,
-                       borderRadius: 2,
-                       "&:hover": {
-                         boxShadow: 6,
-                         transform: "translateY(-4px)",
-                         transition: "all 0.3s ease-in-out",
-                       },
-                     }}
-                   >
-                     <CardContent>
-                       <Rating
-                         value={testimonial.rating}
-                         readOnly
-                         sx={{
-                           mb: 2,
-                           // color: 'primary.main'
-                         }}
-                       />
-                       <Box
-                         sx={{ display: "flex", alignItems: "center", mb: 2 }}
-                       >
-                         <Avatar
-                           src={testimonial.avatar}
-                           alt={testimonial.name}
-                           sx={{ mr: 2 }}
-                         />
-                         <Box>
-                           <Typography
-                             variant="h6"
-                             component="div"
-                             color="text.primary"
-                           >
-                             {testimonial.name}
-                           </Typography>
-                           <Typography variant="body2" color="text.secondary">
-                             {testimonial.role}
-                           </Typography>
-                         </Box>
-                       </Box>
-                       <Typography variant="body2" color="text.secondary">
-                         {testimonial.text}
-                       </Typography>
-                     </CardContent>
-                   </Card>
-                 ))}
-               </Carousel>
-             </Box>
-           </Container>
-         </Box>
-       </AnimationUp>
+                // ml: 10,
+                //    top: 70,
+                width: { sm: "400px", md: "700px" },
+                height: "85%",
+                objectFit: "cover",
+                display: { xs: "none", sm: "block", md: "block" },
+                borderRadius: 2,
+                mb: 10,
+              }}
+            />
+
+            {/* Testimonials Carousel */}
+            <Box
+              sx={{
+                position: "relative",
+                width: { xs: "100%", md: "700px" },
+                ml: { xs: 0, sm: "280px", md: "420px" },
+                top: 22,
+                //  p: 4,
+                zIndex: 1,
+                //    border: "2px solid red",
+              }}
+            >
+              <Carousel
+                responsive={responsive}
+                showDots={false}
+                infinite={true}
+                autoPlay={true}
+                autoPlaySpeed={2000}
+                keyBoardControl={true}
+                customTransition="transform 500ms ease-in-out"
+                transitionDuration={500}
+                containerClass="carousel-container"
+                removeArrowOnDeviceType={["tablet", "mobile", "desktop"]}
+                dotListClass="custom-dot-list-style"
+                itemClass="carousel-item-padding-40-px"
+              >
+                {testimonials.map((testimonial) => (
+                  <Card
+                    key={testimonial.id}
+                    sx={{
+                      maxWidth: 345,
+                      m: 2,
+                      height: "300px",
+                      // mr: { xs: 1, sm: 2, md: 5 },
+                      // height: '300px',
+                      boxShadow: 3,
+                      borderRadius: 2,
+                      "&:hover": {
+                        boxShadow: 6,
+                        transform: "translateY(-4px)",
+                        transition: "all 0.3s ease-in-out",
+                      },
+                    }}
+                  >
+                    <CardContent>
+                      <Rating
+                        value={testimonial.rating}
+                        readOnly
+                        sx={{
+                          mb: 2,
+                          // color: 'primary.main'
+                        }}
+                      />
+                      <Box
+                        sx={{ display: "flex", alignItems: "center", mb: 2 }}
+                      >
+                        <Avatar
+                          src={testimonial.avatar}
+                          alt={testimonial.name}
+                          sx={{ mr: 2 }}
+                        />
+                        <Box>
+                          <Typography
+                            variant="h6"
+                            component="div"
+                            color="text.primary"
+                          >
+                            {testimonial.name}
+                          </Typography>
+                          <Typography variant="body2" color="text.secondary">
+                            {testimonial.role}
+                          </Typography>
+                        </Box>
+                      </Box>
+                      <Typography variant="body2" color="text.secondary">
+                        {testimonial.text}
+                      </Typography>
+                    </CardContent>
+                  </Card>
+                ))}
+              </Carousel>
+            </Box>
+          </Container>
+        </Box>
+      ) : (
+        <AnimationUp>
+          <Box
+            sx={{
+              position: "relative",
+              height: { xs: "600px", md: "400px" },
+              overflow: "hidden",
+              bgcolor: "#f5f5f5",
+              // border: "2px solid red",
+              // paddingBlock: 7,
+              // pl: 50,
+              pt: 5,
+              pb: 25,
+              // margin: '50px auto',
+              Width: "80%",
+            }}
+          >
+            <Container maxWidth="lg" sx={{
+                // border: '1px solid red',
+            }}>
+              <Typography
+                variant="h4"
+                sx={{
+                  textAlign: "left",
+                  fontWeight: "bold",
+                  color: "primary.main",
+                  mb: 2
+                }}
+              >
+                Our Clients
+              </Typography>
+
+              {/* Background Image */}
+              <Box
+                component="img"
+                src="/Clientbg.jpg"
+                alt="Background"
+                sx={{
+                  
+                  position: "absolute",
+                  //    left: 0,
+
+                  // ml: 10,
+                  //    top: 70,
+                  width: "700px",
+                  height: "75%",
+                  objectFit: "cover",
+                  display: { xs: "none", md: "block" },
+                  borderRadius: 2,
+                  mb: 10,
+                
+                }}
+              />
+
+              {/* Testimonials Carousel */}
+              <Box
+                sx={{
+                  position: "relative",
+                  width: { xs: "100%", md: "700px" },
+                  ml: { xs: 0, md: "420px" },
+                  top: 22,
+                  p: 4,
+                  zIndex: 1,
+                  //    border: "2px solid red",
+                }}
+              >
+                <Carousel
+                  responsive={responsive}
+                  showDots={false}
+                  infinite={true}
+                  autoPlay={true}
+                  autoPlaySpeed={2000}
+                  keyBoardControl={true}
+                  customTransition="transform 500ms ease-in-out"
+                  transitionDuration={500}
+                  containerClass="carousel-container"
+                  removeArrowOnDeviceType={["tablet", "mobile", "desktop"]}
+                  dotListClass="custom-dot-list-style"
+                  itemClass="carousel-item-padding-40-px"
+                >
+                  {testimonials.map((testimonial) => (
+                    <Card
+                      key={testimonial.id}
+                      sx={{
+                        maxWidth: 345,
+                        m: 2,
+                        height: "300px",
+                        // mr: { xs: 1, sm: 2, md: 5 },
+                        // height: '300px',
+                        boxShadow: 3,
+                        borderRadius: 2,
+                        "&:hover": {
+                          boxShadow: 6,
+                          transform: "translateY(-4px)",
+                          transition: "all 0.3s ease-in-out",
+                        },
+                      }}
+                    >
+                      <CardContent>
+                        <Rating
+                          value={testimonial.rating}
+                          readOnly
+                          sx={{
+                            mb: 2,
+                            // color: 'primary.main'
+                          }}
+                        />
+                        <Box
+                          sx={{ display: "flex", alignItems: "center", mb: 2 }}
+                        >
+                          <Avatar
+                            src={testimonial.avatar}
+                            alt={testimonial.name}
+                            sx={{ mr: 2 }}
+                          />
+                          <Box>
+                            <Typography
+                              variant="h6"
+                              component="div"
+                              color="text.primary"
+                            >
+                              {testimonial.name}
+                            </Typography>
+                            <Typography variant="body2" color="text.secondary">
+                              {testimonial.role}
+                            </Typography>
+                          </Box>
+                        </Box>
+                        <Typography variant="body2" color="text.secondary">
+                          {testimonial.text}
+                        </Typography>
+                      </CardContent>
+                    </Card>
+                  ))}
+                </Carousel>
+              </Box>
+            </Container>
+          </Box>
+        </AnimationUp>
       )}
-
     </ThemeProvider>
   );
 }

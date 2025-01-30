@@ -109,7 +109,7 @@ export default function AboutSection() {
   }
 
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
-  const isXsScreen = useMediaQuery(theme.breakpoints.down("sm"));
+  const isXsScreen = useMediaQuery(theme.breakpoints.down("xl"));
   return (
     <>
     
@@ -166,7 +166,7 @@ export default function AboutSection() {
                     <Box
                       sx={{
                         position: "relative",
-                        width: {xs: "100%", md: "100%"},
+                        width: {xs: "100%",sm: "100%", md: "100%"},
                         height: "200px",
                         mb: 2,
                         ml:2,
@@ -186,15 +186,16 @@ export default function AboutSection() {
     />
   );
                       */}
-
+                        
                       <Image
                         objectPosition="relative"
                         src="/Image1.jpg"
                         alt="Electrical supplies"
                         
                         // style={{ objectFit: "cover" }}
-                        width={215}
-                        height={200}
+                        // width={ 215}
+                        // height={200}
+                        fill
                       />
                     </Box>
                     </Box>
@@ -349,7 +350,7 @@ export default function AboutSection() {
                     width: "100%",
                     height: "200px",
                     mb: 2,
-                    ml:2
+                    ml:2,
                   }}
                 >
                   <Image
@@ -357,8 +358,9 @@ export default function AboutSection() {
                     alt="Electrical supplies"
                     
                     // style={{ objectFit: "cover" }}
-                    width={300}
-                    height={200}
+                    // width={300}
+                    // height={200}
+                    fill
                   />
                 </Box>
                 </Box>

@@ -33,10 +33,11 @@ import Image from "next/image";
 // import Link from "next/link";
 import theme from "../theme";
 import CloseIcon from '@mui/icons-material/Close';
+import { usePathname } from "next/navigation";
 
 
 const Animation: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const isMobile = useMediaQuery(theme.breakpoints.down("md"));
+  // const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
   const controls = useAnimation();
   const [ref, inView] = useInView({
@@ -109,7 +110,8 @@ const menuItems = [
 ];
 
 export default function Navbar() {
-  const isMobile = useMediaQuery(theme.breakpoints.down("md"));
+  const pathname = usePathname()
+;  const isMobile = useMediaQuery(theme.breakpoints.down("lg"));
   const [mobileOpen, setMobileOpen] = useState(false);
   const [openSubmenu, setOpenSubmenu] = useState<string | null>(null);
   const [open, setOpen] = useState(false);
@@ -206,15 +208,21 @@ export default function Navbar() {
 
 
             <AppBar
+              
               position="static"
               color="default"
               elevation={0}
+              
+              
               sx={{
                 // bgcolor: theme.palette.background.paper, // Quill Gray background
+                // top: 0
               }}
             >
               <Container>
-                <Toolbar disableGutters sx={{ }}>
+                <Toolbar disableGutters sx={{ 
+                  justifyContent: "space-between" 
+                  }}>
                   <Link href='/'>
                   <Image  src="/Logo.png" alt="Logo" height={100} width={95} />
     
@@ -243,7 +251,8 @@ export default function Navbar() {
                         onClick={handleDrawerToggle}
                         sx={{
                           color:'black',
-                          ml:2
+                          ml:2,
+                          
                         }}
                       >
                         <MenuIcon />
@@ -266,6 +275,7 @@ export default function Navbar() {
                         flexGrow: 1,
                         display: "flex",
                         justifyContent: "center",
+                        border: '2px solid black'
                       }}
                     >
                       {menuItems.map((item) => (
@@ -292,13 +302,13 @@ export default function Navbar() {
                       ))}
                     </Box>
                   )}
-    
+                  
                   <Search
                     sx={{
                       border: 1,
                       borderColor: "grey.300",
                       borderRadius: 1,
-                      display: { xs: "none", sm: "block" },
+                      display: { xs: "none", sm: "none" },
                     }}
                   >
                     <SearchIconWrapper>
@@ -310,6 +320,8 @@ export default function Navbar() {
                       sx={{ color: "#1C4B84" }}
                     />
                   </Search>
+
+                  
                 </Toolbar>
               </Container>
             </AppBar>
@@ -324,10 +336,15 @@ export default function Navbar() {
           elevation={0}
           sx={{
             // bgcolor: theme.palette.background.paper, // Quill Gray background
+            
           }}
         >
-          <Container>
-            <Toolbar disableGutters sx={{ justifyContent: "space-between" }}>
+          <Container sx={{
+            
+          }}>
+            <Toolbar disableGutters sx={{ 
+              justifyContent: "space-between"
+               }}>
               <Link href='/'>
               <Image  src="/Logo.png" alt="Logo" height={105} width={100} />
 
@@ -379,17 +396,29 @@ export default function Navbar() {
                     justifyContent: "center",
                   }}
                 >
-                  {menuItems.map((item) => (
-                    <Link href={item.href} key={item.text} color="#000">
+                  {menuItems.filter((item) => !(pathname === "/" && item.href === "/")) // Hide "HOME" on "/"
+                  .map((item) => (
+                    <Link key={item.text} href={item.href} sx={{ textDecoration: "none" }}>
                       <Button
                         sx={{
-                          bgcolor: '#f5f5f5',
-                          color: 'text.primary',
+                          color: pathname === item.href ? "primary.main" : "text.primary", // Active/inactive color
+                          // fontWeight: pathname === item.href ? "bold" : "normal",
+                          bgcolor: 'transparent',
+                          
                           mx: '1px',
                           ":hover": {
-                            color: 'white',
-                            background: 'primary.main'
+                          color: 'black',
+                          bgcolor: 'transparent',
+                          "&::after":{
+                            content: '""',
+                            display: 'block',
+                            width: '80%',
+                            height: '2px',
+                            position: 'absolute',
+                            bottom: 0,
+                            backgroundColor: 'black'
                           }
+                        }
                         }}
                         endIcon={
                           item.hasSubmenu ? (
@@ -410,6 +439,7 @@ export default function Navbar() {
                   borderColor: "grey.300",
                   borderRadius: 1,
                   display: { xs: "none", sm: "block" },
+                  
                 }}
               >
                 <SearchIconWrapper>

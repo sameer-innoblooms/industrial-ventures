@@ -187,28 +187,36 @@ export default function Hero() {
         sx={{
           position: "relative",
           bgcolor: "#f8f9fa",
-          pt: {xs: 5, md:10},
+          pt: {xs: 5, sm: 5, md:10},
           // pb: 20,
         }}
       >
        {isMobile? (
                   <Container>
                   <Grid container spacing={4} alignItems="center">
-                    <Grid item xs={12} md={6}>
+                    <Grid item xs={12} sm={6} md={6} sx={{
+                      
+                      
+                    }}>
                       
                      
                         <Typography
-                          component="h1"
+                          component="h1" 
                           variant="h3"
                           color="text.primary"
                           gutterBottom
                           fontWeight="bold"
+                          sx={{
+                            
+                          }}
                         >
                           Building Lives
                           <br />
                           And Excellence
                         </Typography>
-                        <Typography variant="h6" color="text.secondary" paragraph>
+                        <Typography variant="h6" color="text.secondary" paragraph sx={{
+                          
+                        }}>
                           Our company is dedicated to providing high-quality
                           mechanical and electrical products that meet the diverse
                           needs of our clients.
@@ -242,7 +250,7 @@ export default function Hero() {
                       
                     </Grid>
       
-                    <Grid item xs={12} md={6}>
+                    <Grid item xs={12}sm={6} md={6}>
                       
                         {/*@ts-ignore*/}
                         <Carousel
@@ -265,7 +273,7 @@ export default function Hero() {
                               key={index}
                               sx={{
                                 maxWidth: 400,
-                                mx: "auto",
+                                mx: {xs: "auto", sm: "auto", md: "auto"},
                                 backgroundColor: "transparent",
                                 boxShadow: 0
                               }}
@@ -273,8 +281,8 @@ export default function Hero() {
                               <Image
                                 src={obj.url}
                                 alt="Product Image"
-                                width={400}
-                                height={300}
+                                width={340}
+                                height={240}
                                 objectFit="fit"
                               />
                               <CardContent>
@@ -334,7 +342,7 @@ export default function Hero() {
                         description: "100% Secure",
                       },
                     ].map((feature, index) => (
-                      <Grid item xs={12} md={4} key={index}>
+                      <Grid item xs={12} sm={4} md={4} key={index}>
                         <Card
                           sx={{
                             height: "100%",

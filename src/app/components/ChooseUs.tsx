@@ -24,7 +24,7 @@ import theme from "../theme"
 import AnimationLeft from "./AnimationLeft"
 
 const features = [
-  { label: "Money Back Guarantee", value: 90 },
+  { label: "Customer Satisfaction", value: 92 },
   { label: "Trusted Company", value: 94 },
 ]
 
@@ -186,7 +186,7 @@ export default function ChooseUs() {
                         ))}
                       </List>
       
-                      <Button variant="contained" size="large" sx={{ mt: 4, bgcolor: "primary.main" }}>
+                      <Button href="/contact" variant="contained" size="large" sx={{ mt: 4, bgcolor: "primary.main" }}>
                         VISIT US
                       </Button>
                     </Grid>
@@ -265,7 +265,7 @@ export default function ChooseUs() {
                   ))}
                 </List>
 
-                <Button variant="contained" size="large" sx={{ mt: 4, bgcolor: "primary.main" }}>
+                <Button href="/contact" variant="contained" size="large" sx={{ mt: 4, bgcolor: "primary.main" }}>
                   VISIT US
                 </Button>
               </Grid>

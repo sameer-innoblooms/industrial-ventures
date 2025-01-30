@@ -50,7 +50,7 @@ const Contact = () => {
                       justifyContent: "center",
                       alignItems: "center",
                       paddingBlock: 10,
-                      padding: {xs:4},
+                      padding: {xs: 4},
                     }}
                   >
                     <Box
@@ -59,18 +59,19 @@ const Contact = () => {
                         width: "550px",
                         height: "auto",
                         // backgroundColor: 'green',
+                        // border: '2px solid white',
                         alignContent: "center",
             
                       }}
                     >
                       <Typography
-                        variant="subtitle1"
-                        sx={{ textAlign: "left", color: "white", mb: 1 }}
+                        variant="subtitle2"
+                        sx={{ textAlign: "left", color: "white", mb: 1,  }}
                       >
                         TALK WITH US TO GET THE BEST DEALS IN THE MARKET
                       </Typography>
                       <Typography
-                        variant="h4"
+                        variant="h5"
                         component="h2"
                         fontWeight="bold"
                         gutterBottom
@@ -172,12 +173,12 @@ const Contact = () => {
         <Box
         sx={{
           display: "flex",
-          flexDirection: { xs: "column", md: "row" },
+          flexDirection: { xs: "column", md: "row" }, 
         }}
       >
         <Box
           sx={{
-            width: {xs:"100%", md: "50%"},
+            width: {xs:"100%", md: "49%"},
             height: {xs: "500px", md: "auto"},
             bgcolor: "red",
             backgroundImage: "url(/Contact.png)",
@@ -199,7 +200,7 @@ const Contact = () => {
         </Box>
         <Box
           sx={{
-            width: {xs:"100%", md: "50%"},
+            width: {xs:"100%", md: "51%"},
             height: "auto",
             // bgcolor: "#0085cb",
             bgcolor: "primary.main",
@@ -207,7 +208,7 @@ const Contact = () => {
             justifyContent: "center",
             alignItems: "center",
             paddingBlock: 10,
-            padding: 10,
+            // padding: 10,
           }}
         >
           <Box
@@ -229,9 +230,7 @@ const Contact = () => {
             <Typography
               variant="h4"
               component="h2"
-              fontWeight="bold"
-              gutterBottom
-              sx={{ textAlign: "left", mb: 1, color: "white" }}
+              sx={{ mb: 2, fontWeight: "bold", textAlign: 'left', color: 'white' }}
             >
                 WE WELCOME ALL TYPES OF QUERY RELATED TO PRODUCTS
               </Typography>
