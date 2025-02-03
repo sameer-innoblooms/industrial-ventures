@@ -10,7 +10,6 @@ import {
   Box,
   Container,
   IconButton,
-  Stack,
   Drawer,
   List,
   ListItemText,
@@ -19,10 +18,8 @@ import {
   useMediaQuery,
   Link,
 } from "@mui/material";
-import { styled, alpha, ThemeProvider } from "@mui/material/styles";
+import { styled, alpha} from "@mui/material/styles";
 import SearchIcon from "@mui/icons-material/Search";
-import EmailIcon from "@mui/icons-material/Email";
-import PhoneIcon from "@mui/icons-material/Phone";
 import MenuIcon from "@mui/icons-material/Menu";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import ExpandLess from "@mui/icons-material/ExpandLess";
@@ -32,9 +29,8 @@ import { useInView } from "react-intersection-observer";
 import Image from "next/image";
 // import Link from "next/link";
 import theme from "../theme";
-import CloseIcon from '@mui/icons-material/Close';
+import CloseIcon from "@mui/icons-material/Close";
 import { usePathname } from "next/navigation";
-
 
 const Animation: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   // const isMobile = useMediaQuery(theme.breakpoints.down("md"));
@@ -110,18 +106,12 @@ const menuItems = [
 ];
 
 export default function Navbar() {
-  const pathname = usePathname()
-;  const isMobile = useMediaQuery(theme.breakpoints.down("lg"));
+  const pathname = usePathname();
+  const isMobile = useMediaQuery(theme.breakpoints.down("lg"));
   const [mobileOpen, setMobileOpen] = useState(false);
   const [openSubmenu, setOpenSubmenu] = useState<string | null>(null);
-  const [open, setOpen] = useState(false);
 
 
-
-
-  const toggleDrawer = (newOpen: boolean) => () => {
-    setOpen(newOpen);
-  };
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
@@ -134,33 +124,30 @@ export default function Navbar() {
   const drawer = (
     <Box sx={{ width: 250 }} role="presentation">
       <List>
-      <Box
-        sx={{
-          height: { xs: "60px", sm: "80px" },
-          display: "flex",
-          justifyContent: "flex-end",
-          // alignItems: "center",
-          // p: 2,
-        }}
-      >
-        <IconButton onClick={handleDrawerToggle}>
-          <CloseIcon
-            sx={{ color: "black", fontSize: { xs: "24px", sm: "32px" } }}
-          />
-        </IconButton>
-      </Box>
+        <Box
+          sx={{
+            height: { xs: "60px", sm: "80px" },
+            display: "flex",
+            justifyContent: "flex-end",
+            // alignItems: "center",
+            // p: 2,
+          }}
+        >
+          <IconButton onClick={handleDrawerToggle}>
+            <CloseIcon
+              sx={{ color: "black", fontSize: { xs: "24px", sm: "32px" } }}
+            />
+          </IconButton>
+        </Box>
         {menuItems.map((item) => (
-          <Box key={item.text} sx={{
-       
-          }}>
+          <Box key={item.text} sx={{}}>
             <Link
               href={item.href}
               sx={{
                 color: "black",
-                textDecoration: "none"
+                textDecoration: "none",
               }}
             >
-
               <ListItemButton
                 onClick={() => item.hasSubmenu && handleSubmenuClick(item.text)}
               >
@@ -168,21 +155,26 @@ export default function Navbar() {
                   primary={item.text}
                   sx={{
                     color: "black",
-                    textAlign:'center'
-                   
-                  }}   
+                    textAlign: "center",
+                  }}
                 />
                 {item.hasSubmenu &&
-                  (openSubmenu === item.text ? <ExpandLess sx={{
-                    color: "black",
-                  }}/> : <ExpandMore />)}
+                  (openSubmenu === item.text ? (
+                    <ExpandLess
+                      sx={{
+                        color: "black",
+                      }}
+                    />
+                  ) : (
+                    <ExpandMore />
+                  ))}
               </ListItemButton>
             </Link>
             {item.hasSubmenu && (
               <Collapse
                 in={openSubmenu === item.text}
                 timeout="auto"
-                unmountOnExit               
+                unmountOnExit
               >
                 <List component="div" disablePadding>
                   <ListItemButton sx={{ pl: 4 }}>
@@ -202,57 +194,170 @@ export default function Navbar() {
 
   return (
     <>
-    <ThemeProvider theme={theme}>
-      {isMobile? (
-          
-
-
-            <AppBar
-              
-              position="static"
-              color="default"
-              elevation={0}
-              
-              
-              sx={{
+        {isMobile ? (
+          <AppBar
+            position="static"
+            color="default"
+            elevation={0}
+            sx={
+              {
                 // bgcolor: theme.palette.background.paper, // Quill Gray background
                 // top: 0
-              }}
-            >
-              <Container>
-                <Toolbar disableGutters sx={{ 
-                  justifyContent: "space-between" 
-                  }}>
-                  <Link href='/'>
-                  <Image  src="/Logo.png" alt="Logo" height={100} width={95} />
-    
-                  </Link>
-    
-                  <Typography
+              }
+            }
+          >
+            <Container>
+              <Toolbar
+                disableGutters
+                sx={{
+                  justifyContent: "space-between",
+                }}
+              >
+                <Link href="/">
+                  <Image src="./Logo.png" alt="Logo" height={100} width={95} />
+                </Link>
+
+                <Typography
                   variant="h5"
                   component="a"
                   href="/"
                   sx={{
                     fontWeight: 700,
-                    color: 'text.primary',
-                    textDecoration: 'none',
-                    
+                    color: "text.primary",
+                    textDecoration: "none",
                   }}
                 >
                   Industrial Ventures
                 </Typography>
-    
+
+                {isMobile ? (
+                  <>
+                    <IconButton
+                      aria-label="open drawer"
+                      edge="start"
+                      onClick={handleDrawerToggle}
+                      sx={{
+                        color: "black",
+                        ml: 2,
+                      }}
+                    >
+                      <MenuIcon />
+                    </IconButton>
+                    <Drawer
+                      variant="temporary"
+                      anchor="right"
+                      open={mobileOpen}
+                      onClose={handleDrawerToggle}
+                      ModalProps={{
+                        keepMounted: true, // Better open performance on mobile.
+                      }}
+                    >
+                      {drawer}
+                    </Drawer>
+                  </>
+                ) : (
+                  <Box
+                    sx={{
+                      flexGrow: 1,
+                      display: "flex",
+                      justifyContent: "center",
+                      border: "2px solid black",
+                    }}
+                  >
+                    {menuItems.map((item) => (
+                      <Link href={item.href} key={item.text} color="#000">
+                        <Button
+                          sx={{
+                            bgcolor: "#f5f5f5",
+                            color: "text.primary",
+                            mx: "1px",
+                            ":hover": {
+                              color: "white",
+                              background: "primary.main",
+                            },
+                          }}
+                          endIcon={
+                            item.hasSubmenu ? (
+                              <KeyboardArrowDownIcon />
+                            ) : undefined
+                          }
+                        >
+                          {item.text}
+                        </Button>
+                      </Link>
+                    ))}
+                  </Box>
+                )}
+
+                <Search
+                  sx={{
+                    border: 1,
+                    borderColor: "grey.300",
+                    borderRadius: 1,
+                    display: { xs: "none", sm: "none" },
+                  }}
+                >
+                  <SearchIconWrapper>
+                    <SearchIcon sx={{ color: "text.primary" }} />
+                  </SearchIconWrapper>
+                  <StyledInputBase
+                    placeholder="electrical"
+                    inputProps={{ "aria-label": "search" }}
+                    sx={{ color: "#1C4B84" }}
+                  />
+                </Search>
+              </Toolbar>
+            </Container>
+          </AppBar>
+        ) : (
+          <Animation>
+            <AppBar
+              position="static"
+              color="default"
+              elevation={0}
+              sx={
+                {
+                  // bgcolor: theme.palette.background.paper, // Quill Gray background
+                }
+              }
+            >
+              <Container sx={{}}>
+                <Toolbar
+                  disableGutters
+                  sx={{
+                    justifyContent: "space-between",
+                  }}
+                >
+                  <Link href="/">
+                    <Image
+                      src="./Logo.png"
+                      alt="Logo"
+                      height={105}
+                      width={100}
+                    />
+                  </Link>
+
+                  <Typography
+                    variant="h5"
+                    component="a"
+                    href="/"
+                    sx={{
+                      fontWeight: 700,
+                      color: "text.primary",
+                      textDecoration: "none",
+                    }}
+                  >
+                    Industrial Ventures
+                  </Typography>
+
                   {isMobile ? (
                     <>
                       <IconButton
-                        
                         aria-label="open drawer"
                         edge="start"
                         onClick={handleDrawerToggle}
                         sx={{
-                          color:'black',
-                          ml:2,
-                          
+                          color: "black",
                         }}
                       >
                         <MenuIcon />
@@ -275,138 +380,28 @@ export default function Navbar() {
                         flexGrow: 1,
                         display: "flex",
                         justifyContent: "center",
-                        border: '2px solid black'
                       }}
                     >
-                      {menuItems.map((item) => (
-                        <Link href={item.href} key={item.text} color="#000">
-                          <Button
-                            sx={{
-                              bgcolor: '#f5f5f5',
-                              color: 'text.primary',
-                              mx: '1px',
-                              ":hover": {
-                                color: 'white',
-                                background: 'primary.main'
-                              }
-                            }}
-                            endIcon={
-                              item.hasSubmenu ? (
-                                <KeyboardArrowDownIcon />
-                              ) : undefined
-                            }
+                      {menuItems
+                        .filter(
+                          (item) => !(pathname === "/" && item.href === "/")
+                        ) // Hide "HOME" on "/"
+                        .map((item) => (
+                          <Link
+                            key={item.text}
+                            href={item.href}
+                            sx={{ textDecoration: "none" }}
                           >
-                            {item.text}
-                          </Button>
-                        </Link>
-                      ))}
-                    </Box>
-                  )}
-                  
-                  <Search
-                    sx={{
-                      border: 1,
-                      borderColor: "grey.300",
-                      borderRadius: 1,
-                      display: { xs: "none", sm: "none" },
-                    }}
-                  >
-                    <SearchIconWrapper>
-                      <SearchIcon sx={{ color: "text.primary" }} />
-                    </SearchIconWrapper>
-                    <StyledInputBase
-                      placeholder="electrical"
-                      inputProps={{ "aria-label": "search" }}
-                      sx={{ color: "#1C4B84" }}
-                    />
-                  </Search>
-
-                  
-                </Toolbar>
-              </Container>
-            </AppBar>
-
-      ):(
-        <Animation>
-
-
-        <AppBar
-          position="static"
-          color="default"
-          elevation={0}
-          sx={{
-            // bgcolor: theme.palette.background.paper, // Quill Gray background
-            
-          }}
-        >
-          <Container sx={{
-            
-          }}>
-            <Toolbar disableGutters sx={{ 
-              justifyContent: "space-between"
-               }}>
-              <Link href='/'>
-              <Image  src="/Logo.png" alt="Logo" height={105} width={100} />
-
-              </Link>
-
-              <Typography
-              variant="h5"
-              component="a"
-              href="/"
-              sx={{
-                fontWeight: 700,
-                color: 'text.primary',
-                textDecoration: 'none',
-              }}
-            >
-              Industrial Ventures
-            </Typography>
-
-              {isMobile ? (
-                <>
-                  <IconButton
-                    
-                    aria-label="open drawer"
-                    edge="start"
-                    onClick={handleDrawerToggle}
-                    sx={{
-                      color:'black'
-                    }}
-                  >
-                    <MenuIcon />
-                  </IconButton>
-                  <Drawer
-                    variant="temporary"
-                    anchor="right"
-                    open={mobileOpen}
-                    onClose={handleDrawerToggle}
-                    ModalProps={{
-                      keepMounted: true, // Better open performance on mobile.
-                    }}
-                  >
-                    {drawer}
-                  </Drawer>
-                </>
-              ) : (
-                <Box
-                  sx={{
-                    flexGrow: 1,
-                    display: "flex",
-                    justifyContent: "center",
-                  }}
-                >
-                  {menuItems.filter((item) => !(pathname === "/" && item.href === "/")) // Hide "HOME" on "/"
-                  .map((item) => (
-                    <Link key={item.text} href={item.href} sx={{ textDecoration: "none" }}>
-                      <Button
-                        sx={{
-                          color: pathname === item.href ? "primary.main" : "text.primary", // Active/inactive color
-                          // fontWeight: pathname === item.href ? "bold" : "normal",
-                          bgcolor: 'transparent',
-                          
-                          mx: '1px',
-                          ":hover": {
+                            <Button
+                              sx={{
+                                color:
+                                  pathname === item.href
+                                    ? "primary.main"
+                                    : "text.primary", // Active color for the button
+                                bgcolor: "transparent",
+                                position: "relative", // Necessary for pseudo-element positioning
+                                mx: "1px",
+                                ":hover": {
                           color: 'black',
                           bgcolor: 'transparent',
                           "&::after":{
@@ -418,46 +413,56 @@ export default function Navbar() {
                             bottom: 0,
                             backgroundColor: 'black'
                           }
-                        }
-                        }}
-                        endIcon={
-                          item.hasSubmenu ? (
-                            <KeyboardArrowDownIcon />
-                          ) : undefined
-                        }
-                      >
-                        {item.text}
-                      </Button>
-                    </Link>
-                  ))}
-                </Box>
-              )}
+                        },
+                                // Add an "after" pseudo-element for the active route
+                                "&::after": {
+                                  content:
+                                    pathname === item.href ? '""' : "none", // Show the pseudo-element only when active
+                                  display:
+                                    pathname === item.href ? "block" : "none", // Only show the pseudo-element when active
+                                  width: "80%",
+                                  height: "2px",
+                                  position: "absolute",
+                                  bottom: 0,
+                                  backgroundColor: "black", // Style the underline as per hover
+                                  left: "10%", // Adjust positioning to be centered
+                                },
+                              }}
+                              endIcon={
+                                item.hasSubmenu ? (
+                                  <KeyboardArrowDownIcon />
+                                ) : undefined
+                              }
+                            >
+                              {item.text}
+                            </Button>
+                          </Link>
+                        ))}
+                    </Box>
+                  )}
 
-              <Search
-                sx={{
-                  border: 1,
-                  borderColor: "grey.300",
-                  borderRadius: 1,
-                  display: { xs: "none", sm: "block" },
-                  
-                }}
-              >
-                <SearchIconWrapper>
-                  <SearchIcon sx={{ color: "text.primary" }} />
-                </SearchIconWrapper>
-                <StyledInputBase
-                  placeholder="electrical"
-                  inputProps={{ "aria-label": "search" }}
-                  sx={{ color: "#1C4B84" }}
-                />
-              </Search>
-            </Toolbar>
-          </Container>
-        </AppBar>
-      </Animation>
-      )}
-    </ThemeProvider>
-      
+                  <Search
+                    sx={{
+                      border: 1,
+                      borderColor: "grey.300",
+                      borderRadius: 1,
+                      display: { xs: "none", sm: "block" },
+                    }}
+                  >
+                    <SearchIconWrapper>
+                      <SearchIcon sx={{ color: "text.primary" }} />
+                    </SearchIconWrapper>
+                    <StyledInputBase
+                      placeholder="electrical"
+                      inputProps={{ "aria-label": "search" }}
+                      sx={{ color: "#1C4B84" }}
+                    />
+                  </Search>
+                </Toolbar>
+              </Container>
+            </AppBar>
+          </Animation>
+        )}
     </>
   );
 }

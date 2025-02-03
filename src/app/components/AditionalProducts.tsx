@@ -1,194 +1,3 @@
-// "use client"
-
-// import { Box, Grid, Typography, Button, ThemeProvider, createTheme } from "@mui/material"
-
-// const theme = createTheme({
-//   palette: {
-//     primary: {
-//       main: "#1C4B84" ,
-//     },
-//   },
-// })
-
-// export default function AdditionalProduct() {
-//   return (
-//     <ThemeProvider theme={theme}>
-//       <Box sx={{ maxWidth: 1200, mx: "auto", p: 4 }}>
-//         <Box sx={{ mb: 4, border: '3px double red', gridTemplateColumns: '1fr fr' }}>
-//           <Typography
-//             sx={{
-//               color: "primary.main",
-//               fontSize: "0.875rem",
-//               mb: 1,
-//             }}
-//           >
-//             Additional Product
-//           </Typography>
-//           <Typography
-//             variant="h4"
-//             sx={{
-//               fontWeight: "bold",
-//               mb: 3,
-//             }}
-//           >
-//             Best Quality Product
-//           </Typography>
-//         </Box>
-
-//         <Grid container spacing={3}>
-//           <Grid item xs={12} md={8}>
-//             <Grid container spacing={3}>
-//               {/* First Product */}
-//               <Grid item xs={12} sm={6}>
-//                 <Box
-//                   sx={{
-//                     bgcolor: "white",
-//                     borderRadius: 1,
-//                     boxShadow: 1,
-//                     p: 2,
-//                     height: "100%",
-//                     display: "flex",
-//                     flexDirection: "column",
-//                   }}
-//                 >
-//                   <Box
-//                     component="img"
-//                     src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-ti4rAZsbhTuLO3qp3l8xerDvN6lpIc.png"
-//                     alt="Contact Socket"
-//                     sx={{
-//                       width: "100%",
-//                       height: 200,
-//                       objectFit: "contain",
-//                       mb: 2,
-//                     }}
-//                   />
-//                   <Box sx={{ textAlign: "center", mb: 2, flexGrow: 1 }}>
-//                     <Typography variant="h6" sx={{ mb: 1 }}>
-//                       Contact Socket
-//                     </Typography>
-//                     <Typography sx={{ color: "text.secondary" }}>$8.00</Typography>
-//                   </Box>
-//                   <Button
-//                     variant="contained"
-//                     fullWidth
-//                     sx={{
-//                       bgcolor: "primary.main",
-//                       color: "white",
-//                       "&:hover": {
-//                         bgcolor: "primary.dark",
-//                       },
-//                     }}
-//                   >
-//                     ADD TO CART
-//                   </Button>
-//                 </Box>
-//               </Grid>
-
-//               {/* Second Product */}
-//               <Grid item xs={12} sm={6}>
-//                 <Box
-//                   sx={{
-//                     bgcolor: "white",
-//                     borderRadius: 1,
-//                     boxShadow: 1,
-//                     p: 2,
-//                     height: "100%",
-//                     display: "flex",
-//                     flexDirection: "column",
-//                     position: "relative",
-//                   }}
-//                 >
-//                   <Box
-//                     sx={{
-//                       position: "absolute",
-//                       top: 16,
-//                       right: 16,
-//                       bgcolor: "primary.main",
-//                       color: "white",
-//                       px: 1,
-//                       py: 0.5,
-//                       borderRadius: 1,
-//                       fontSize: "0.75rem",
-//                     }}
-//                   >
-//                     40% SALE
-//                   </Box>
-//                   <Box
-//                     component="img"
-//                     src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-ti4rAZsbhTuLO3qp3l8xerDvN6lpIc.png"
-//                     alt="Toolbox"
-//                     sx={{
-//                       width: "100%",
-//                       height: 200,
-//                       objectFit: "contain",
-//                       mb: 2,
-//                     }}
-//                   />
-//                   <Box sx={{ textAlign: "center", mb: 2, flexGrow: 1 }}>
-//                     <Typography variant="h6" sx={{ mb: 1 }}>
-//                       Toolbox
-//                     </Typography>
-//                     <Typography sx={{ color: "text.secondary" }}>$30.00</Typography>
-//                   </Box>
-//                   <Button
-//                     variant="contained"
-//                     fullWidth
-//                     sx={{
-//                       bgcolor: "primary.main",
-//                       color: "white",
-//                       "&:hover": {
-//                         bgcolor: "primary.dark",
-//                       },
-//                     }}
-//                   >
-//                     ADD TO CART
-//                   </Button>
-//                 </Box>
-//               </Grid>
-//             </Grid>
-//           </Grid>
-
-//           {/* Promo Banner */}
-//           <Grid item xs={12} md={4}>
-//             <Box
-//               sx={{
-//                 bgcolor: "primary.main",
-//                 borderRadius: 2,
-//                 p: 4,
-//                 height: "100%",
-//                 display: "flex",
-//                 flexDirection: "column",
-//                 justifyContent: "center",
-//                 color: "white",
-//               }}
-//             >
-//               <Typography variant="h4" sx={{ mb: 2 }}>
-//                 Best Product Deals
-//               </Typography>
-//               <Typography sx={{ mb: 3 }}>
-//                 Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
-//               </Typography>
-//               <Button
-//                 variant="outlined"
-//                 sx={{
-//                   color: "white",
-//                   borderColor: "white",
-//                   alignSelf: "flex-start",
-//                   "&:hover": {
-//                     borderColor: "white",
-//                     bgcolor: "rgba(255,255,255,0.1)",
-//                   },
-//                 }}
-//               >
-//                 SEE PRODUCT
-//               </Button>
-//             </Box>
-//           </Grid>
-//         </Grid>
-//       </Box>
-//     </ThemeProvider>
-//   )
-// }
 
 "use client";
 
@@ -196,8 +5,6 @@ import {
   Box,
   Button,
   Container,
-  createTheme,
-  ThemeProvider,
   Typography,
   useMediaQuery,
 } from "@mui/material";
@@ -215,8 +22,8 @@ const arrow = {
 export default function AdditionalProducts() {
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
   return (
-    <ThemeProvider theme={theme}>
-      {isMobile ? (
+<>
+{isMobile ? (
         <Container
           maxWidth="lg"
           sx={{
@@ -346,7 +153,7 @@ export default function AdditionalProducts() {
                     }}
                   >
                     <Image
-                      src="/FloodLight.png"
+                      src="./FloodLight.png"
                       alt="Cables"
                       height={200}
                       width={200}
@@ -376,7 +183,7 @@ export default function AdditionalProducts() {
               >
                 <Box
                   component="img"
-                  src="/Light.png"
+                  src="./Light.png"
                   alt="Light"
                   sx={{
                     width: "100%",
@@ -426,7 +233,7 @@ export default function AdditionalProducts() {
               >
                 <Box
                   component="img"
-                  src="/Motor1.jpeg"
+                  src="./Motor1.jpeg"
                   alt="Light"
                   sx={{
                     width: "100%",
@@ -585,7 +392,7 @@ export default function AdditionalProducts() {
                       }}
                     >
                       <Image
-                        src="/FloodLight.png"
+                        src="./FloodLight.png"
                         alt="Cables"
                         height={200}
                         width={200}
@@ -618,7 +425,7 @@ export default function AdditionalProducts() {
                 >
                   <Box
                     component="img"
-                    src="/Light.png"
+                    src="./Light.png"
                     alt="Light"
                     sx={{
                       width: "100%",
@@ -674,7 +481,7 @@ export default function AdditionalProducts() {
                 >
                   <Box
                     component="img"
-                    src="/Motor1.jpeg"
+                    src="./Motor1.jpeg"
                     alt="Light"
                     sx={{
                       width: "100%",
@@ -707,6 +514,7 @@ export default function AdditionalProducts() {
           </AnimationUp>
         </Container>
       )}
-    </ThemeProvider>
+</>
+
   );
 }

@@ -7,25 +7,22 @@ import {
   Typography,
   Button,
   Box,
-  ThemeProvider,
   useMediaQuery,
 } from "@mui/material";
 import Animation from "./AnimationUp";
-import Image from "next/image";
 import theme from "../theme";
-import AnimationLeft from "./AnimationLeft";
 
 const promotions = [
   {
-    title: "New Years Sale",
-    subtitle: "Up To 50% Off Sales",
-    image: "/Ionizer.png",
+    title: "Competitive Prices",
+    subtitle: "Big Discounts",
+    image: "./Ionizer.png",
     buttonColor: "#9dff00",
   },
   {
-    title: "Black Friday Sale",
-    subtitle: "Free Shipping For This Month",
-    image: "/Cable2.png",
+    title: "Trusted Brands",
+    subtitle: "Grab Yours Now",
+    image: "./Cable2.png",
     buttonColor: "#9dff00",
   },
 ];
@@ -33,8 +30,8 @@ const promotions = [
 export default function Promotions() {
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
   return (
-    <ThemeProvider theme={theme}>
-      {isMobile ? (
+    <>
+          {isMobile ? (
         <Container sx={{ pb: 8, pt: {md: 2}, marginBlock: {md: 4} }}>
 
             <Grid container spacing={4}>
@@ -47,7 +44,7 @@ export default function Promotions() {
                       bgcolor: "primary.main",
                       color: "white",
                       backgroundImage: `url(${promo.image})`,
-                      backgroundSize: "45%",
+                      backgroundSize: index === 1 ? "40%" : "45%",
                       backgroundRepeat: "no-repeat",
                       backgroundPosition: "right center",
                     }}
@@ -68,6 +65,7 @@ export default function Promotions() {
                       </Typography>
 
                       <Button
+                      href="/product"
                         sx={{
                           color: "white",
                           fontSize: "1rem",
@@ -121,6 +119,7 @@ export default function Promotions() {
                       </Typography>
 
                       <Button
+                      href="/product"
                         sx={{
                           color: "white",
                           fontSize: "1rem",
@@ -141,6 +140,8 @@ export default function Promotions() {
           </Animation>
         </Container>
       )}
-    </ThemeProvider>
+    </>
+
+
   );
 }

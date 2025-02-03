@@ -11,7 +11,6 @@ import {
   ListItem,
   ListItemIcon,
   ListItemText,
-  ThemeProvider,
   useMediaQuery,
 } from "@mui/material"
 import CheckCircleIcon from "@mui/icons-material/CheckCircle"
@@ -21,7 +20,6 @@ import { useAnimation, motion } from "framer-motion"
 import { useInView } from "react-intersection-observer"
 import AnimationRight from "./AnimationRight"
 import theme from "../theme"
-import AnimationLeft from "./AnimationLeft"
 
 const features = [
   { label: "Customer Satisfaction", value: 92 },
@@ -114,9 +112,9 @@ export default function ChooseUs() {
   const isMobile = useMediaQuery(theme.breakpoints.down("xl"));
 
   return (
-    <ThemeProvider theme={theme}>
-       {isMobile ? (
-              <Box sx={{ bgcolor: "#f8f9fa", py: 8 }}>
+<>
+{isMobile ? (
+              <Box sx={{ bgcolor: "#f5f5f5", py: 8 }}>
               <Container maxWidth="xl">
 
                   <Grid container spacing={4}>
@@ -127,7 +125,7 @@ export default function ChooseUs() {
                         sx={{
                           height: "100%",
                           minHeight: 400,
-                          backgroundImage: `url(/Contact.png)`,
+                          backgroundImage: `url(./Contact.png)`,
                           backgroundSize: "cover",
                           backgroundPosition: "center",
                           borderRadius: 2,
@@ -206,7 +204,7 @@ export default function ChooseUs() {
                   sx={{
                     height: "100%",
                     minHeight: 400,
-                    backgroundImage: `url(/Contact.png)`,
+                    backgroundImage: `url(./Contact.png)`,
                     backgroundSize: "cover",
                     backgroundPosition: "center",
                     borderRadius: 2,
@@ -274,7 +272,9 @@ export default function ChooseUs() {
         </Container>
       </Box>
        )}
-    </ThemeProvider>
+</>
+
+
   )
 }
 

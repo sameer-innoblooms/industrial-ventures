@@ -1,6 +1,5 @@
 "use client";
 
-import { ThemeProvider } from "@emotion/react";
 import {
   Box,
   Card,
@@ -23,7 +22,7 @@ const testimonials = [
     role: "Customer",
     rating: 5,
     text: "I've been a loyal customer of Industrial Ventures Products for over three years now, and I can't recommend them enough! I once had an issue with a delivery, and they resolved it within hours. Truly a company that puts its customers first. - Harish Tyagi, Mumbai, India",
-    avatar: "/Client1.jpg?height=40&width=40",
+    avatar: "./Client1.jpg?height=40&width=40",
   },
   {
     id: 2,
@@ -31,7 +30,7 @@ const testimonials = [
     role: "Customer",
     rating: 5,
     text: "As a small business owner, finding reliable suppliers is crucial for my success. Industrial Ventures Products has consistently delivered high-quality items that keep my customers happy and coming back for more- Shaurya Mala, Delhi, India",
-    avatar: "/Client2.jpg?height=40&width=40",
+    avatar: "./Client2.jpg?height=40&width=40",
   },
   {
     id: 3,
@@ -39,7 +38,7 @@ const testimonials = [
     role: "Customer",
     rating: 4,
     text: "I was initially skeptical about ordering online, but Industrial Ventures Products changed my perspective entirely. The ease of ordering, prompt delivery, and excellent product quality have made me a regular customer. - Raj Shukla, Bangalore, India",
-    avatar: "/Client3.png?height=40&width=40",
+    avatar: "./Client3.png?height=40&width=40",
   },
   // Add more testimonials as needed
 ];
@@ -66,8 +65,8 @@ export default function Clients() {
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
   return (
-    <ThemeProvider theme={theme}>
-      {isMobile ? (
+    <>
+        {isMobile ? (
         <Box
           sx={{
             position: "relative",
@@ -78,17 +77,40 @@ export default function Clients() {
             // paddingBlock: 7,
             // pl: 50,
             pt: { xs: 2, sm: 4, md: 5 },
-            pb: { xs: 0, md: 10 },
-            px: { xs: 0, sm: 2, md: 5 },
+            pb: { xs: 5, md: 10 },
+            px: { xs: 1, sm: 2, md: 5 },
             // margin: '50px auto',
             Width: "80%",
           }}
         >
           <Container maxWidth="lg">
             {/* Background Image */}
+            <Typography
+                variant="h5"
+                sx={{
+                  color: "primary.main",
+                  // fontSize: "0.875rem",
+                  fontWeight: "bold",
+                  textAlign: 'left'
+                  
+                }}
+              >
+                Testimonials
+              </Typography>
+              <Typography
+                variant="h4"
+                sx={{
+                  fontWeight: "bold",
+                  
+                  color: "text.primary",
+                  textAlign: 'left'
+                }}
+              >
+                What Our Clients Say
+              </Typography>
             <Box
               component="img"
-              src="/Clientbg.jpg"
+              src="./Clientbg.jpg"
               alt="Background"
               sx={{
                 position: "absolute",
@@ -206,40 +228,52 @@ export default function Clients() {
               Width: "80%",
             }}
           >
-            <Container maxWidth="lg" sx={{
-                // border: '1px solid red',
-            }}>
+            <Container
+              maxWidth="lg"
+              sx={
+                {
+                  // border: '1px solid red',
+                }
+              }
+            >
+              <Typography
+                variant="h5"
+                sx={{
+                  color: "primary.main",
+                  // fontSize: "0.875rem",
+                  fontWeight: "bold",
+                  mb: 1,
+                }}
+              >
+                Testimonials
+              </Typography>
               <Typography
                 variant="h4"
                 sx={{
-                  textAlign: "left",
                   fontWeight: "bold",
-                  color: "primary.main",
-                  mb: 2
+                  mb: 3,
+                  color: "text.primary",
                 }}
               >
-                Our Clients
+                What Our Clients Say
               </Typography>
-
               {/* Background Image */}
               <Box
                 component="img"
-                src="/Clientbg.jpg"
+                src="./Clientbg.jpg"
                 alt="Background"
                 sx={{
-                  
                   position: "absolute",
                   //    left: 0,
 
                   // ml: 10,
                   //    top: 70,
                   width: "700px",
-                  height: "75%",
+                  height: "70%",
                   objectFit: "cover",
                   display: { xs: "none", md: "block" },
                   borderRadius: 2,
                   mb: 10,
-                
                 }}
               />
 
@@ -329,6 +363,7 @@ export default function Clients() {
           </Box>
         </AnimationUp>
       )}
-    </ThemeProvider>
+    </>
+
   );
 }

@@ -5,20 +5,13 @@ import {
   Typography,
   Grid,
   Card,
-  CardMedia,
   CardContent,
-  Button,
   Box,
-  Select,
-  MenuItem,
-  FormControl,
-  SelectChangeEvent,
   Chip,
-  ThemeProvider,
   useMediaQuery,
 } from "@mui/material";
 import { useAnimation, motion } from "framer-motion";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useInView } from "react-intersection-observer";
 import theme from "../theme";
 
@@ -36,7 +29,7 @@ const products: Product[] = [
     id: 1,
     name: "Lightings",
     price: 30.0,
-    image: "/FloodLight.png",
+    image: "./FloodLight.png",
     sale: true,
     salePercentage: 20,
   },
@@ -44,16 +37,16 @@ const products: Product[] = [
     id: 2,
     name: "Ionizer",
     price: 100.0,
-    image: "/Ionizer.png",
+    image: "./Ionizer.png",
     sale: true,
     salePercentage: 25,
   },
-  { id: 3, name: "Motor", price: 20.0, image: "/Motor.png" },
+  { id: 3, name: "Motor", price: 20.0, image: "./Motor.png" },
   {
     id: 4,
     name: "Boiler Mounting",
     price: 5.0,
-    image: "/BoilerMountings.png",
+    image: "./BoilerMountings.png",
     sale: true,
     salePercentage: 20,
   },
@@ -61,7 +54,7 @@ const products: Product[] = [
     id: 5,
     name: "Water Meter",
     price: 5.0,
-    image: "/WaterMeter.png",
+    image: "./WaterMeter.png",
     sale: true,
     salePercentage: 20,
   },
@@ -69,7 +62,7 @@ const products: Product[] = [
     id: 6,
     name: "V Belts",
     price: 30.0,
-    image: "/Vbelt.png",
+    image: "./Vbelt.png",
     sale: true,
     salePercentage: 20,
   },
@@ -77,11 +70,11 @@ const products: Product[] = [
     id: 7,
     name: "Capacitors",
     price: 30.0,
-    image: "/Capacitors.png",
+    image: "./Capacitors.png",
     sale: true,
     salePercentage: 40,
   },
-  { id: 8, name: "Pvc, Upvc Pipes", price: 8.0, image: "/PvcPipes.png" },
+  { id: 8, name: "Pvc, Upvc Pipes", price: 8.0, image: "./PvcPipes.png" },
 ];
 
 const Animation: React.FC<{ children: React.ReactNode }> = ({ children }) => {
@@ -111,15 +104,12 @@ const Animation: React.FC<{ children: React.ReactNode }> = ({ children }) => {
 
 export default function BestSeller() {
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
-  const [sorting, setSorting] = useState("default");
 
-  const handleSortChange = (event: SelectChangeEvent) => {
-    setSorting(event.target.value);
-  };
+
 
   return (
-    <ThemeProvider theme={theme}>
-     {isMobile? (
+    <>
+         {isMobile? (
             <Container
             sx={{
               pt: 6,
@@ -360,6 +350,7 @@ export default function BestSeller() {
       </Animation>
     </Container>
      )}
-    </ThemeProvider>
+    </>
+
   );
 }

@@ -1,109 +1,3 @@
-// 'use client'
-
-// import {
-//   Box,
-//   Container,
-//   Typography,
-//   Button,
-//   styled
-// } from '@mui/material'
-
-// const HeroContainer = styled(Box)({
-//   background: '#0066b3',
-//   minHeight: '80vh',
-//   display: 'flex',
-//   alignItems: 'center',
-//   position: 'relative',
-//   overflow: 'hidden'
-// })
-
-// const KnowMoreButton = styled(Button)({
-//   background: '#00a3e0',
-//   color: 'white',
-//   padding: '12px 32px',
-//   fontSize: '16px',
-//   '&:hover': {
-//     background: '#0093c9'
-//   }
-// })
-
-// const LeafShape = styled(Box)({
-//   position: 'absolute',
-//   right: '10%',
-//   top: '50%',
-//   transform: 'translateY(-50%)',
-//   width: '500px',
-//   height: '500px',
-//   background: 'url(https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot%202025-01-18%20142503-oqfR3kVdc8rffdx8rePMChwEPTgDku.png)',
-//   backgroundSize: 'cover',
-//   clipPath: 'path("M 0,100 C 40,10 60,10 100,100 L 50,200 Z")',
-// })
-
-// export default function Hero() {
-//   return (
-//     <HeroContainer>
-//       <Container maxWidth="xl" sx={{mx: { xs: 2, md: 12 }}}>
-//         <Box sx={{
-//           display: 'flex',
-//           alignItems: 'center',
-//           position: 'relative',
-//           zIndex: 1
-//         }}>
-//           <Box sx={{ maxWidth: '600px' }}>
-//             <Typography
-//               variant="h1"
-//               sx={{
-//                 color: 'white',
-//                 fontSize: { xs: '2.5rem', md: '3.5rem' },
-//                 fontWeight: 700,
-//                 marginBottom: 3,
-//                 lineHeight: 1.2
-//               }}
-//             >
-//             Industrial Ventures: Making Water Accessible for All!
-//             </Typography>
-//             <Typography
-//               variant="body1"
-//               sx={{
-//                 color: 'white',
-//                 marginBottom: 4,
-//                 fontSize: '1.1rem',
-//                 lineHeight: 1.6
-//               }}
-//             >
-//               We have in-house design, engineering, and execution capabilities. We possess a rare combination of financial power that the Industrial Ventures wields. Largest manufacturers of high performance bore-well submersible pumps in India.
-//               Known for reliability in the toughest working conditions
-//             </Typography>
-//             <KnowMoreButton variant="contained">
-//               Know More
-//             </KnowMoreButton>
-//           </Box>
-//         </Box>
-//       </Container>
-
-//       {/* Decorative elements */}
-//       <Box sx={{
-//         position: 'absolute',
-//         right: 0,
-//         top: 0,
-//         width: '50%',
-//         height: '100%',
-//         display: 'flex',
-//         justifyContent: 'center',
-//         alignItems: 'center'
-//       }}>
-//         <Box component="img"
-//         //   src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot%202025-01-18%20142503-oqfR3kVdc8rffdx8rePMChwEPTgDku.png"
-//           sx={{
-//             width: '100%',
-//             height: '100%',
-//             objectFit: 'contain'
-//           }}
-//         />
-//       </Box>
-//     </HeroContainer>
-//   )
-// }
 
 "use client";
 
@@ -113,11 +7,10 @@ import {
   Typography,
   Button,
   Card,
-  CardMedia,
   CardContent,
   Box,
   Stack,
-  ThemeProvider,
+  
   useMediaQuery,
 } from "@mui/material";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
@@ -151,19 +44,19 @@ export default function Hero() {
 
   const images = [
     {
-      url: "/FloodLight.png",
+      url: "./FloodLight.png",
       title: "Flood Light",
       description:
         "A large, bright artificial light that emits a wide beam of light.",
     },
     {
-      url: "/Motor.png",
+      url: "./Motor.png",
       title: "Motor",
       description:
         "A high-quality motor that provides efficient and reliable performance.",
     },
     {
-      url: "/Cable1.png",
+      url: "./Cable1.png",
       title: "Cables",
       description:
         "A range of high-quality cables that provide reliable and efficient connectivity.",
@@ -182,7 +75,6 @@ export default function Hero() {
   // }, []);
 
   return (
-    <ThemeProvider theme={theme}>
       <Box
         sx={{
           position: "relative",
@@ -192,7 +84,9 @@ export default function Hero() {
         }}
       >
        {isMobile? (
-                  <Container>
+                  <Container sx={{
+                    mb:10
+                  }}>
                   <Grid container spacing={4} alignItems="center">
                     <Grid item xs={12} sm={6} md={6} sx={{
                       
@@ -252,9 +146,8 @@ export default function Hero() {
       
                     <Grid item xs={12}sm={6} md={6}>
                       
-                        {/*@ts-ignore*/}
                         <Carousel
-                          //@ts-ignore
+                          //@ts-expect-error: Carousel is not defined
                           responsive={responsive}
                           showDots={false}
                           infinite={true}
@@ -377,7 +270,9 @@ export default function Hero() {
                   
                 </Container>
        ): (
-        <Container>
+        <Container sx={{
+          mb:10
+        }}>
         <Grid container spacing={4} alignItems="center">
           <Grid item xs={12} md={6}>
             
@@ -429,9 +324,8 @@ export default function Hero() {
 
           <Grid item xs={12} md={6}>
             <AnimationRight>
-              {/*@ts-ignore*/}
               <Carousel
-                //@ts-ignore
+                //@ts-expect-error: Carousel is not defined
                 responsive={responsive}
                 showDots={false}
                 infinite={true}
@@ -522,6 +416,8 @@ export default function Hero() {
             <Grid item xs={12} md={4} key={index}>
               <Card
                 sx={{
+                  boxShadow: 2,
+                  bgcolor: '#f5f5f5',
                   height: "100%",
                   display: "flex",
                   alignItems: "center",
@@ -554,6 +450,5 @@ export default function Hero() {
 
         
       </Box>
-    </ThemeProvider>
   );
 }

@@ -6,10 +6,12 @@ export default function Map() {
     <>
       <Box
         sx={{
+          // bgcolor: "#f5f5f5",
           flex: 1,
           height: { xs: "300px", md: "400px" },
           // borderRadius: "10px",
-          mb: 8
+          mb: {xs: 11, md: 4 },
+          
         }}
       >
         <iframe

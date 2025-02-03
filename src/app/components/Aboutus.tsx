@@ -6,7 +6,6 @@ import Container from "@mui/material/Container";
 import {
   Box,
   Grid,
-  ThemeProvider,
   Typography,
   useMediaQuery,
 } from "@mui/material";
@@ -25,7 +24,6 @@ const AnimatedStat: React.FC<StatProps> = ({ end, suffix = "", label }) => {
   const [isVisible, setIsVisible] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
 
-  const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -126,11 +124,11 @@ export default function Aboutus() {
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
   return (
     <>
-      <ThemeProvider theme={theme}>
+      
         {isMobile ? (
           <Box
             sx={{
-              bgcolor: "#f8f9fa",
+              // bgcolor: "#f8f9fa",
             }}
           >
             <Container
@@ -199,7 +197,7 @@ export default function Aboutus() {
         ) : (
           <Box
             sx={{
-              bgcolor: "#f8f9fa",
+              // bgcolor: "#f8f9fa",
             }}
           >
             <Container
@@ -207,8 +205,8 @@ export default function Aboutus() {
               sx={{
                 pt: 5,
                 pb: 5,
-                mt: 15,
-                mb: 5,
+                // mt: 15,
+                // mb: 5,
               }}
             >
               <AnimatedHeading>
@@ -266,7 +264,6 @@ export default function Aboutus() {
             </Container>
           </Box>
         )}
-      </ThemeProvider>
     </>
   );
 }
